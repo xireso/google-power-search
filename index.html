@@ -17,13 +17,18 @@
 <body>
     <h1>Find pages with</h1>
     <!-- <p>This <b>exact</b> word or phrase</p> -->
-    <label for="exact">This <b>exact</b> word or phrase</label><br>
 
+    <div>
+        <label for="exact">This <b>exact</b> word or phrase</label><br>
+        <input type="text" class="exact blue" value="" 
+        placeholder="may the force be with you"><br>
+    </div>
+    
     
 
     Name: <input type="text" id="myText" value="say cheese">
 
-    <button class="button" id="right" onclick="window.open('https://google.com/search?q=where+have+all+the+flowers+gone');">
+    <button class="button" id="right" onclick="searchGoogle()">
         Search google
     </button>
 
