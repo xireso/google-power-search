@@ -1,7 +1,8 @@
 //record for search bar
 var searchStringElements = new Array(13);
 // record of selected files for narrowing search
-var selectedFiles = [];
+var narrowFiles = [];
+var excludeFiles = [];
 //CONSTANTS
 //Find pages with
 const exactIndex = 2;
@@ -126,7 +127,7 @@ function getLogicOp(operator, keywordArray) {
 function updateSearchString() {
 	let searchString = '';
 	for (searchElement of searchStringElements) {
-		if (searchElement != undefined) searchString += ' ' + searchElement;
+		if (searchElement != undefined) searchString += searchElement + ' ';
 	}
 	document.getElementById('searchString').value = searchString;
 }
@@ -162,21 +163,34 @@ function anyAllToggle(idName, isAny) {
 }
 
 function fileTypeToggle(idName) {
+	let selectedNarrow = idName.substr(9) == 'narrow' ? true : false;
+	console.log(idName.substr(9));
+
 	let filetype = document.getElementById(idName);
 	if (filetype.classList.contains('button-highlight')) {
 		filetype.classList.remove('button-highlight');
 		filetype.classList.add('button');
-		selectedFiles.splice(selectedFiles.indexOf('filetype:' + idName.substring(0, fileNameLength)), 1);
+		if (selectedNarrow)
+			narrowFiles.splice(narrowFiles.indexOf('filetype:' + idName.substring(0, fileNameLength)), 1);
+		else excludeFiles.splice(excludeFiles.indexOf('-filetype:' + idName.substring(0, fileNameLength)), 1);
 	} else {
 		filetype.classList.remove('button');
 		filetype.classList.add('button-highlight');
-		selectedFiles.push('filetype:' + idName.substring(0, fileNameLength));
+
+		if (selectedNarrow) narrowFiles.push('filetype:' + idName.substring(0, fileNameLength));
+		else excludeFiles.push('-filetype:' + idName.substring(0, fileNameLength));
 	}
 	updateNarrowFiles();
+	updateExcludedFiles();
 }
 
 function updateNarrowFiles() {
-	searchStringElements[fileTypeIndex] = getLogicOp(anyOp, selectedFiles);
+	searchStringElements[fileTypeIndex] = getLogicOp(anyOp, narrowFiles);
+	updateSearchString();
+}
+
+function updateExcludedFiles() {
+	searchStringElements[excludeFileTypeIndex] = getLogicOp(allOp, excludeFiles);
 	updateSearchString();
 }
 
