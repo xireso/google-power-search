@@ -50,7 +50,7 @@ function updateExact() {
  * creates string of keywords separated by OR
  */
 function updateAny() {
-	let input = document.getElementsByClassName(any)[1].value;
+	let input = document.getElementsByClassName('any')[1].value;
 	let delimit = input.split(delimiter);
 	searchStringElements[anyIndex] = getLogicOp(anyOp, delimit);
 	updateSearchString();
@@ -61,7 +61,7 @@ function updateAny() {
  * creates string of keywords separated by AND
  */
 function updateAll() {
-	let input = document.getElementsByClassName(all)[1].value;
+	let input = document.getElementsByClassName('all')[1].value;
 	let delimit = input.split(delimiter);
 	searchStringElements[allIndex] = getLogicOp(allOp, delimit);
 	updateSearchString();
@@ -76,7 +76,7 @@ function getLogicOp(operator, keywordArray) {
 	let out = '';
 	//if there is only one word, done
 	if (keywordArray.length == 1) {
-		return input;
+		return keywordArray[0];
 	}
 
 	//creates logic line
@@ -141,7 +141,7 @@ function fileTypeToggle(idName) {
 	if (filetype.classList.contains('button-highlight')) {
 		filetype.classList.remove('button-highlight');
 		filetype.classList.add('button');
-		selectedFiles.remove("filetype:" + idName.substring(0,fileNameLength));
+		selectedFiles.splice(selectedFiles.indexOf("filetype:" + idName.substring(0,fileNameLength)),1);
 	} else {
 		filetype.classList.remove('button');
 		filetype.classList.add('button-highlight');
