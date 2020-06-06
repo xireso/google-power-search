@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,21 +11,40 @@
     <link rel="stylesheet" href="styles.css">
 
     <!-- google fonts embedding -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto&display=swap" 
-    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto&display=swap"
+        rel="stylesheet">
 
 </head>
+
 <body>
     <h1>Find pages with</h1>
     <!-- <p>This <b>exact</b> word or phrase</p> -->
 
-    <div>
-        <label for="exact">This <b>exact</b> word or phrase</label><br>
-        <input type="text" class="exact blue" value="" 
-        placeholder="may the force be with you"><br>
+    <div class="find-pages">
+        <div class="exact">
+            <label for="exact label" class="exact label">This <b>exact</b> word or phrase</label><br>
+            <input type="text" class="exact field" value="" placeholder="may the force be with you"><br>
+        </div>
+        <div class="any">
+            <label for="any label" class="any label"><b>Any</b> of these keywords</label><br>
+            <input type="text" class="exact field" value="" placeholder="word1 word2 word3"><br>
+        </div>
+        <div class="all">
+            <label for="all label" class="all label"><b>All</b> of these keywords</label><br>
+            <input type="text" class="all field" value="" placeholder="word1 word2 word3"><br>
+        </div>
+        <br>
+        <div class="apart">
+            <label for="apart label" class="apart label">
+            <input type="text" class="apart field" value="" placeholder="pop"><br>
+            <label for="apart label" class="apart label">and</label>
+            <input type="text" class="apart field" value="" placeholder="culture"><br>
+            <label for="">less than</label>
+            <input type="text" class="apart field" value="" placeholder="4"><br>
+            <label for="">words apart</label>
+        </div>
     </div>
-    
-    
+
 
     Name: <input type="text" id="myText" value="say cheese">
 
@@ -35,4 +55,5 @@
     <!-- link to our javascript file -->
     <script src="main.js"></script>
 </body>
+
 </html>
