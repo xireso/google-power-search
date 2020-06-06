@@ -74,6 +74,9 @@ function updateAll() {
  */
 function getLogicOp(operator, keywordArray) {
 	let out = '';
+	if (keywordArray.length == 0) {
+		return out
+	}
 	//if there is only one word, done
 	if (keywordArray.length == 1) {
 		return keywordArray[0];
