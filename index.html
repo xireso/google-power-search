@@ -21,12 +21,70 @@
 
     <button class="clear-button" onclick="clearAll()">Clear All Inputs</button>
 
+    <!-- open the pop-up box-->
+    <button class ="help-modal-button" id="helpBtn" onclick="popUp('helpModal','helpBtn')">How to Use</button>
+    <div id="helpModal" class="modal">
+        <!-- modal content-->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h1 class="center">Getting Started:</h1>
+            <h3 class="blue-header">1. Enter a search query</h3>
+                <ul> 
+                    <li>You want text in AT LEAST one search line</li>
+                    <li>A line in any box goes! (except red)</li>
+                </ul>
+             <h3 class="red-header">2. (Opt.) Add additional specifications</h3>
+                <ul> 
+                    <li>Customize your search!</li>
+                </ul>
+             <h3 class="green-header">3. Click the Search Icon or hit Enter!</h3>
+        </div>
+    </div>
+    
+    <button class ="example-modal-button" id="exBtn" onclick="popUp('exModal', 'exBtn')">Fun Examples!</button>
+    <div id="exModal" class="modal">
+        <!-- modal content-->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h1 class="center">Prompts for Googling:</h1>
+            <h3 class="blue-header">Specific domains or News sources:</h3>
+                <ul> 
+                    <li>.edu -> Institutions of Higher Education </li>
+                    <li>.gov -> Government Websites </li>
+                    <li>wsj.com -> Wall Street Journal</li>
+                    <li>theonion.com -> The Onion:</li>
+                    <li>reddit.com -> Reddit</li>
+                </ul>
+
+            <h3 class="red-header">Find Powerpoints to play <a href="https://slidelizard.com/en/blog/powerpoint-karaoke-rules-and-free-download">Powerpoint Karoke:</a></h3>
+                <ul> 
+                    <li>Search by filetype: ppt</li>
+                    <li>Topics: environment, animals, technology, video games</li>
+                </ul>
+
+            <h3 class="yellow-header">Find source code in a <a href="https://support.google.com/webmasters/answer/35287?hl=en">variety of languages</a>:</h3>
+                <ul> 
+                    <li>Search by filetype: py, java, c, cs</li>
+                    <li>Explore how people have written: Sudoku, Tic Tac Toe, etc...</li>
+                </ul>
+
+            <h3 class="green-header">Limit results to filetype pdf and easily find:</h3>
+            <ul> 
+                <li>e-Books!</li>
+                <li>music!</li>
+                <li>Company annual reports!</li>
+            </ul>
+
+            <h2>Have fun exploring!</h2>
+        </div>
+    </div>
+
     <div class="grid">
 
         <!-- Module for "Find pages with:" -->
         <div class="find-pages big-section">
 
-            <h1 id="find-pages-header">Find pages with:</h1>
+            <h1 class="blue-header">Find pages with:</h1>
 
             <div class="find-pages vertical"></div>
 
@@ -75,7 +133,7 @@
         <!-- Module for "Pages with appearances of:" -->
         <div class="specific-pages big-section">
 
-            <h1 id="specific-header">Pages with appearances of:</h1>
+            <h1 class="red-header">Pages with appearances of:</h1>
 
             <div class="specific-pages vertical"></div>
 
@@ -112,7 +170,7 @@
         <!-- Module for "Narrow down results:" -->
         <div class="narrow-results big-section">
 
-            <h1 id="narrow-header">Narrow down results:</h1>
+            <h1 class="yellow-header">Narrow down results:</h1>
 
             <div class="narrow-results vertical"></div>
 
@@ -139,7 +197,7 @@
         <!-- Module for "Exclude results:" -->
         <div class="exclude-results big-section">
 
-            <h1 id="exclude-header">Exclude results:</h1>
+            <h1 class="green-header">Exclude results:</h1>
 
             <div class="exclude-results vertical"></div>
 

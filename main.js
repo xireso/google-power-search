@@ -492,3 +492,26 @@ function joinWithSpaces(array) {
 	}
 	return out;
 }
+function popUp(modalName,idName) {
+	var modal = document.getElementById(modalName);
+	var btn = document.getElementById(idName);
+
+	// get <span> doc for closing the modal (box)
+	var span = document.getElementsByClassName("close")[0];
+
+	btn.onclick = function() {
+		modal.style.display = "block";
+	}
+
+	// close modal on clicking (x)
+	span.onclick = function() { 
+		modal.style.display = "none";
+	}
+
+	// close modal when user clicks on window (outside modal)
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+}
