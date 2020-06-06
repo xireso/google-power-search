@@ -1,3 +1,18 @@
 h1 {
 	color: red;
 }
+
+.button {
+	background-color: white;
+	border: 1px solid black;
+	color: black;
+	padding: 1px 3px;
+	text-align: center;
+	text-decoration: none;
+	font-family: sans-serif;
+	display: inline-block;
+	font-size: 17px;
+	margin: 0px 0px;
+	cursor: pointer;
+	transition-duration: 0.4s;
+  }
