@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="styles.css">
 
     <!-- google fonts embedding -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&display=swap"
         rel="stylesheet">
 
 </head>
@@ -25,7 +25,12 @@
 
         <div class="exact module">
             <label for="exact">This <b>exact</b> word or phrase</label><br>
-            <input type="text" class="exact field" value="" placeholder="may the force be with you"><br>
+            <input type="text" class="exact field" 
+                value="" 
+                placeholder="may the force be with you"
+                onkeyup="updateSearchString()"
+            >
+            <br>
         </div>
 
         <div class="any module">
@@ -56,11 +61,13 @@
     <br>
     <br>
 
-    Name: <input type="text" id="myText" value="say cheese">
-
-    <button class="button" id="right" onclick="searchGoogle()">
-        Search google
-    </button>
+    <div class="big-section">
+        <h1 id="searchString">Filler</h1>
+        <button class="button" id="right" onclick="searchGoogle()">
+            Search google
+        </button>
+    </div>
+    
 
     <!-- link to our javascript file -->
     <script src="main.js"></script>
