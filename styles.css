@@ -1,5 +1,49 @@
+:root {
+	--blue: #4285f4;
+	--red: #db4437;
+	--yellow: #f4b400;
+	--green: #0f9d58;
+
+	--blue-light: #e7f0ff;
+	--red-light: #fff3f3;
+	--yellow-light: #fff7e0;
+	--green-light: #e5f9e9;
+
+	--blue-dark: #1d55b2;
+	--red-dark: #c44536;
+	--yellow-dark: #e0a100;
+	--green-dark: #00542b;
+
+	--blue-dim: #8da6d0;
+	--red-dim: #d1a59b;
+	--yellow-dim: #e1c882;
+	--green-dim: #7fa894;
+}
+
 h1 {
-	color: red;
+	color: var(--blue);
+	font-family: "Playfair Display";
+	font-size: 1.4rem;
+}
+
+input {
+	outline: none;
+	border: none;
+	border-radius: 7px;
+	padding: 3px 9px;
+	margin: 5px;
+	margin-left: 0;
+}
+
+.exact {
+	background-color: var(--blue-light);
+	color: var(--blue-dark);
+	font-style: italic;
+	font-weight: bold;
+}
+
+.exact::placeholder {
+	color: var(--blue-dim);
 }
 
 .button {
@@ -15,4 +59,4 @@ h1 {
 	margin: 0px 0px;
 	cursor: pointer;
 	transition-duration: 0.4s;
-  }
+}
