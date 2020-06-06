@@ -18,11 +18,11 @@ const excludeDomainIndex = 11;
 const excludeFileTypeIndex = 12;
 
 //Logic operators
-const anyOp = "OR";
-const allOp = "AND"
+const anyOp = 'OR';
+const allOp = 'AND';
 
 //delimiter to separate keywords
-const delimiter = ",";
+const delimiter = ',';
 
 function updateExact() {
 	var exact = '"' + document.getElementsByClassName('exact')[1].value + '"';
@@ -35,37 +35,37 @@ function updateExact() {
 }
 
 function updateAny() {
-	searchStringElements[anyIndex] = getLogicOp('any',"OR",1);
+	searchStringElements[anyIndex] = getLogicOp('any', 'OR', 1);
 	updateSearchString(createString());
 }
 
 function updateAll() {
-	searchStringElements[allIndex] = getLogicOp('all',"AND",1);
+	searchStringElements[anyIndex] = getLogicOp('all', 'AND', 1);
 	updateSearchString(createString());
 }
 
 function getLogicOp(logicFunc, operator, inputIndex) {
-	let input =  document.getElementsByClassName(logicFunc)[inputIndex].value;
+	let input = document.getElementsByClassName(logicFunc)[inputIndex].value;
 	let delimit = input.split(delimiter);
 
-	let out = "";
+	let out = '';
 	if (delimit.length == 1) {
 		return input;
 	}
 
 	//creates logic line
-	out = "(";
+	out = '(';
 	for (i = 0; i < delimit.length - 1; i++) {
-		delimit[i+1] = delimit[i+1].trim();
+		delimit[i + 1] = delimit[i + 1].trim();
 		//if else to make sure that there is no operator w/out another keyword on right
-		if(delimit[i+1] != "") out += " " + delimit[i] + " " + operator;
-		else out += " " + delimit[i];
+		if (delimit[i + 1] != '') out += ' ' + delimit[i] + ' ' + operator;
+		else out += ' ' + delimit[i];
 	}
-	
+
 	//fixes bug that adds space when comma with no letters after it typed
-	if ("" == delimit[delimit.length-1].trim()) return out + " )";
+	if ('' == delimit[delimit.length - 1].trim()) return out + ' )';
 	//closes parentheses
-	out += " " + delimit[delimit.length - 1] + " )";
+	out += ' ' + delimit[delimit.length - 1] + ' )';
 	return out;
 }
 
@@ -77,7 +77,7 @@ function createString() {
 	var searchString = '';
 	for (i = 0; i < searchStringElements.length; i++) {
 		if (searchStringElements[i] != undefined) {
-			searchString += " " +searchStringElements[i];
+			searchString += ' ' + searchStringElements[i];
 		}
 	}
 	return searchString;
@@ -91,89 +91,111 @@ function searchGoogle() {
 console.log(document.getElementsByClassName('exact'));
 
 // Select Any / All for text in Title
-function intitleAnySelector() {
-	var any = document.getElementById('intitle-any');
-	any.classList.remove('button');
-	any.classList.add('button-highlight');
+// function intitleAnySelector() {
+// 	var any = document.getElementById('intitle-any');
+// 	any.classList.remove('button');
+// 	any.classList.add('button-highlight');
 
-	var all = document.getElementById('intitle-all');
-	all.classList.remove('button-highlight');
-	all.classList.add('button');
+// 	var all = document.getElementById('intitle-all');
+// 	all.classList.remove('button-highlight');
+// 	all.classList.add('button');
+// }
+
+// function intitleAllSelector() {
+// 	var all = document.getElementById('intitle-all');
+// 	all.classList.remove('button');
+// 	all.classList.add('button-highlight');
+
+// 	var any = document.getElementById('intitle-any');
+// 	any.classList.remove('button-highlight');
+// 	any.classList.add('button');
+// }
+
+function anyAllToggle(idName, isAny) {
+	let anyString = idName + '-any';
+	let allString = idName + '-all';
+	let anyElement = document.getElementById(anyString);
+	let allElement = document.getElementById(allString);
+
+	// if clicked on any, toggle to any
+	if (isAny) {
+		anyElement.classList.remove('button');
+		anyElement.classList.add('button-highlight');
+
+		allElement.classList.remove('button-highlight');
+		allElement.classList.add('button');
+	} else {
+		allElement.classList.remove('button');
+		allElement.classList.add('button-highlight');
+
+		anyElement.classList.remove('button-highlight');
+		anyElement.classList.add('button');
+	}
 }
 
-function intitleAllSelector() {
-	var all = document.getElementById('intitle-all');
-	all.classList.remove('button');
-	all.classList.add('button-highlight');
+// // Select Any / All for text in URL
+// function inurlAnySelector() {
+// 	var any = document.getElementById('inurl-any');
+// 	any.classList.remove('button');
+// 	any.classList.add('button-highlight');
 
-	var any = document.getElementById('intitle-any');
-	any.classList.remove('button-highlight');
-	any.classList.add('button');
-}
+// 	var all = document.getElementById('inurl-all');
+// 	all.classList.remove('button-highlight');
+// 	all.classList.add('button');
+// }
 
-// Select Any / All for text in URL
-function inurlAnySelector() {
-	var any = document.getElementById('inurl-any');
-	any.classList.remove('button');
-	any.classList.add('button-highlight');
+// function inurlAllSelector() {
+// 	var all = document.getElementById('inurl-all');
+// 	all.classList.remove('button');
+// 	all.classList.add('button-highlight');
 
-	var all = document.getElementById('inurl-all');
-	all.classList.remove('button-highlight');
-	all.classList.add('button');
-}
+// 	var any = document.getElementById('inurl-any');
+// 	any.classList.remove('button-highlight');
+// 	any.classList.add('button');
+// }
 
-function inurlAllSelector() {
-	var all = document.getElementById('inurl-all');
-	all.classList.remove('button');
-	all.classList.add('button-highlight');
+// // Select Any / All for text in Text
+// function intextAnySelector() {
+// 	var any = document.getElementById('intext-any');
+// 	any.classList.remove('button');
+// 	any.classList.add('button-highlight');
 
-	var any = document.getElementById('inurl-any');
-	any.classList.remove('button-highlight');
-	any.classList.add('button');
-}
+// 	var all = document.getElementById('intext-all');
+// 	all.classList.remove('button-highlight');
+// 	all.classList.add('button');
+// }
 
-// Select Any / All for text in Text
-function intextAnySelector() {
-	var any = document.getElementById('intext-any');
-	any.classList.remove('button');
-	any.classList.add('button-highlight');
+// function intextAllSelector() {
+// 	var all = document.getElementById('intext-all');
+// 	all.classList.remove('button');
+// 	all.classList.add('button-highlight');
 
-	var all = document.getElementById('intext-all');
-	all.classList.remove('button-highlight');
-	all.classList.add('button');
-}
+// 	var any = document.getElementById('intext-any');
+// 	any.classList.remove('button-highlight');
+// 	any.classList.add('button');
+// }
 
-function intextAllSelector() {
-	var all = document.getElementById('intext-all');
-	all.classList.remove('button');
-	all.classList.add('button-highlight');
+// // Select Any / All for text in Links
 
-	var any = document.getElementById('intext-any');
-	any.classList.remove('button-highlight');
-	any.classList.add('button');
-}
+// function inlinksAnySelector() {
+// 	var any = document.getElementById('inlinks-any');
+// 	any.classList.remove('button');
+// 	any.classList.add('button-highlight');
 
-// Select Any / All for text in Links
+// 	var all = document.getElementById('inlinks-all');
+// 	all.classList.remove('button-highlight');
+// 	all.classList.add('button');
+// }
 
-function inlinksAnySelector() {
-	var any = document.getElementById('inlinks-any');
-	any.classList.remove('button');
-	any.classList.add('button-highlight');
+// function inlinksAllSelector() {
+// 	var all = document.getElementById('inlinks-all');
+// 	all.classList.remove('button');
+// 	all.classList.add('button-highlight');
 
-	var all = document.getElementById('inlinks-all');
-	all.classList.remove('button-highlight');
-	all.classList.add('button');
-}
-
-function inlinksAllSelector() {
-	var all = document.getElementById('inlinks-all');
-	all.classList.remove('button');
-	all.classList.add('button-highlight');
-
-	var any = document.getElementById('inlinks-any');
-	any.classList.remove('button-highlight');
-	any.classList.add('button');
-}
+// 	var any = document.getElementById('inlinks-any');
+// 	any.classList.remove('button-highlight');
+// 	any.classList.add('button');
+// }
 
 
 function fileTypeToggle(idName) {
