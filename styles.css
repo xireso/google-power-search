@@ -76,7 +76,27 @@ html {
 	font-weight: normal;
 }
 
+.grid {
+	display: grid;
+
+	grid-template-areas: "search search narrow" "find specific narrow" "find specific exclude";
+	grid-template-columns: 32% 35% 33%;
+	grid-template-rows: 30% 10% auto;
+
+	padding: 2%;
+}
+
+.page-title {
+	color: white;
+	text-align: center;
+	font-size: 2rem;
+	margin-top: 4%;
+}
+
 /* find pages section (blue) */
+.find-pages {
+	grid-area: find;
+}
 
 #find-pages-header {
 	color: var(--blue);
@@ -114,6 +134,9 @@ html {
 }
 
 /* specific section (red) */
+.specific-pages {
+	grid-area: specific;
+}
 
 #specific-header {
 	color: var(--red);
@@ -133,7 +156,27 @@ html {
 	color: var(--red-dim);
 }
 
+.specific-pages .button {
+	border: none;
+	border-radius: 2;
+	margin: 0;
+
+	color: var(--red-dim);
+	background-color: var(--red-light);
+}
+
+.specific-pages .button-highlight {
+	border: none;
+	border-radius: 2;
+	margin: 0;
+
+	color: white;
+	background-color: var(--red-dark);
+}
 /* narrow down results section */
+.narrow-results {
+	grid-area: narrow;
+}
 
 #narrow-header {
 	color: var(--yellow);
@@ -154,7 +197,28 @@ html {
 	color: var(--yellow-dim);
 }
 
+.narrow-results .button {
+	border: none;
+	border-radius: 2;
+	margin: 0;
+
+	color: var(--yellow-dim);
+	background-color: var(--yellow-light);
+}
+
+.narrow-results .button-highlight {
+	border: none;
+	border-radius: 2;
+	margin: 0;
+
+	color: white;
+	background-color: var(--yellow-dark);
+}
+
 /* exclude results section */
+.exclude-results {
+	grid-area: exclude;
+}
 
 #exclude-header {
 	color: var(--green);
@@ -175,19 +239,58 @@ html {
 	color: var(--green-dim);
 }
 
-/* google search bar section */
+.exclude-results .button {
+	border: none;
+	border-radius: 2;
+	margin: 0;
 
-.button {
-	background-color: white;
-	border: 1px solid black;
-	color: black;
-	padding: 1px 3px;
-	text-align: center;
-	text-decoration: none;
-	font-family: sans-serif;
+	color: var(--green-dim);
+	background-color: var(--green-light);
+}
+
+.exclude-results .button-highlight {
+	border: none;
+	border-radius: 2;
+	margin: 0;
+
+	color: white;
+	background-color: var(--green-dark);
+}
+
+/* google search bar section */
+.google-search-bar {
+	grid-area: search;
+}
+
+.search-header {
+	font-weight: normal;
+	font-size: 1.5rem;
+}
+
+.search-bar {
+	background: linear-gradient(0deg, #ffffff, #ffffff);
+	box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.3);
+	border-radius: 14px;
+
+	margin-top: 2%;
+	margin-right: 4%;
+}
+
+#searchString {
+	font-family: "Roboto Slab";
+	font-size: 1.3rem;
 	display: inline-block;
-	font-size: 17px;
-	margin: 0px 0px;
-	cursor: pointer;
-	transition-duration: 0.4s;
+	margin-left: 4%;
+}
+
+.search-button {
+	display: inline-block;
+
+	border: none;
+	border-radius: 14px;
+
+	width: 70px;
+	height: 70px;
+
+	float: right;
 }
