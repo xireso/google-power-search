@@ -1,19 +1,66 @@
-var searchStringElements = new Array(14);
+var searchStringElements = new Array(13);
+//Find pages with
+const exactIndex = 0;
+const anyIndex = 1;
+const allIndex = 2;
+const aroundIndex = 3;
+//Pages with appearancees of
+const titleIndex = 4;
+const urlIndex = 5;
+const textIndex = 6;
+const linksIndex = 7;
+//Narrow down results
+const fileTypeIndex = 8;
+const byDomainIndex = 9;
+//Exclude results
+const excludeKeywordsIndex = 10;
+const excludeDomainIndex = 11;
+const excludeFileTypeIndex = 12;
+
+//Logic operators
+const anyOp = "OR";
+const allOp = "AND"
+
+//delimiter to separate keywords
+const delimiter = ",";
 
 function updateExact() {
 	var exact =  '"' + document.getElementsByClassName('exact')[1].value + '"';
 	if (exact != '""') {
-		searchStringElements[0] = exact;
+		searchStringElements[exactIndex] = exact;
 	} else {
-		searchStringElements[0] = undefined;
+		searchStringElements[exactIndex] = undefined;
 	}
 	updateSearchString(createString());
 }
 
 function updateAny() {
-	var input =  document.getElementsByClassName('any')[1].value;
-	searchStringElements[1] = input;
+	searchStringElements[anyIndex] = getLogicOp('any',"OR",1);
 	updateSearchString(createString());
+}
+
+function updateAll() {
+	searchStringElements[anyIndex] = getLogicOp('all',"AND",1);
+	updateSearchString(createString());
+}
+
+function getLogicOp(logicFunc, operator, inputIndex) {
+	let input =  document.getElementsByClassName(logicFunc)[inputIndex].value;
+	let delimit = input.split(delimiter);
+
+	let out = "";
+	if (delimit.length == 1) {
+		return input;
+	}
+
+	out = "(";
+	for (i = 0; i < delimit.length - 1; i++) {
+		delimit[i+1] = delimit[i+1].trim();
+		if(delimit[i+1] != "") out += " " + delimit[i] + "  " + operator;
+		else out += " " + delimit[i];
+	}
+	out += " " + delimit[delimit.length - 1] + " )";
+	return out;
 }
 
 function updateSearchString(searchString) {
@@ -24,7 +71,7 @@ function createString() {
 	var searchString = ""
 	for (i = 0; i < searchStringElements.length; i++) {
 		if (searchStringElements[i] != undefined) {
-			searchString = searchString + " " +searchStringElements[i];
+			searchString += " " +searchStringElements[i];
 		}
 	}
 	return searchString;
