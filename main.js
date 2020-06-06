@@ -40,7 +40,7 @@ function updateAny() {
 }
 
 function updateAll() {
-	searchStringElements[anyIndex] = getLogicOp('all', 'AND', 1);
+	searchStringElements[allIndex] = getLogicOp('all', 'AND', 1);
 	updateSearchString(createString());
 }
 
