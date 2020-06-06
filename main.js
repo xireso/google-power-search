@@ -30,16 +30,16 @@ const delimiter = ',';
 //file type length
 const fileNameLength = 3;
 
-
 /**
  * called when exact module modified.
  * creates string with quotes on either side
  */
 function updateExact() {
-	var exact = '"' + document.getElementsByClassName('exact')[1].value + '"';
+	let exact = '"' + document.getElementsByClassName('exact')[1].value + '"';
 	if (exact != '""') {
 		searchStringElements[exactIndex] = exact;
-	} else { //else here to make sure "" not left if exact phrase is deleted
+	} else {
+		//else here to make sure "" not left if exact phrase is deleted
 		searchStringElements[exactIndex] = undefined;
 	}
 	updateSearchString();
@@ -99,7 +99,7 @@ function getLogicOp(operator, keywordArray) {
  * Updates search bar based on user's input
  */
 function updateSearchString() {
-	var searchString = '';
+	let searchString = '';
 	for (searchElement of searchStringElements) {
 		if (searchElement != undefined) searchString += ' ' + searchElement;
 	}
@@ -110,7 +110,7 @@ function updateSearchString() {
  * Searches finished string on google
  */
 function searchGoogle() {
-	URL = 'https://google.com/search?q=' + createString();
+	URL = 'https://google.com/search?q=' + document.getElementById('searchString').value;
 	window.open(URL);
 }
 
@@ -137,27 +137,29 @@ function anyAllToggle(idName, isAny) {
 }
 
 function fileTypeToggle(idName) {
-	var filetype = document.getElementById(idName);
+	let filetype = document.getElementById(idName);
 	if (filetype.classList.contains('button-highlight')) {
 		filetype.classList.remove('button-highlight');
 		filetype.classList.add('button');
-		selectedFiles.splice(selectedFiles.indexOf("filetype:" + idName.substring(0,fileNameLength)),1);
+		selectedFiles.splice(selectedFiles.indexOf('filetype:' + idName.substring(0, fileNameLength)), 1);
 	} else {
 		filetype.classList.remove('button');
 		filetype.classList.add('button-highlight');
-		selectedFiles.push("filetype:" + idName.substring(0,fileNameLength));
+		selectedFiles.push('filetype:' + idName.substring(0, fileNameLength));
 	}
 	updateNarrowFiles();
 }
 
 function updateNarrowFiles() {
-	searchStringElements[fileTypeIndex] = getLogicOp(anyOp,selectedFiles);
+	searchStringElements[fileTypeIndex] = getLogicOp(anyOp, selectedFiles);
 	updateSearchString();
 }
 
 function createString(array) {
-	let out = "";
-	for (str of array) { out += " " + str; }
+	let out = '';
+	for (str of array) {
+		out += ' ' + str;
+	}
 	return out;
 }
 

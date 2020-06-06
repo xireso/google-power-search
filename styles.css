@@ -26,7 +26,7 @@ body {
 	background-color: #2d2d2d;
 	font-family: Roboto;
 
-	background-image: url("https://source.unsplash.com/1600x900/?background"),
+	background-image: url("https://source.unsplash.com/1600x900/?texture, blue"),
 		linear-gradient(rgba(172, 172, 172, 0.01), rgba(172, 172, 172, 0.01));
 	background-blend-mode: overlay;
 }
