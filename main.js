@@ -61,11 +61,7 @@ function updateAny() {
  * creates string of keywords separated by AND
  */
 function updateAll() {
-	let input = document.getElementsByClassName('all')[1].value;
-	let delimit = input.split(delimiter);
-	let str = getLogicOp('', delimit);
-	if (str[0] == "(") str = str.substring(2,str.length-2);
-	searchStringElements[allIndex] = str;
+	searchStringElements[allIndex] = document.getElementsByClassName('all')[1].value;
 	updateSearchString();
 }
 
