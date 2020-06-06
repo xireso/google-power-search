@@ -255,6 +255,23 @@ button {
 	background-color: var(--green-dark);
 }
 
+.exclude-results #filetype-field {
+	display: inline-block;
+	background-color: var(--green-light);
+	color: var(--green-dark);
+	border: none;
+	border-radius: 7px;
+	padding: 3px 8px;
+	margin: 5px 2px;
+	width: 53px;
+	text-align: center;
+}
+
+.exclude-results #filetype-field::placeholder {
+	font-size: 0.6rem;
+	color: var(--green-dim);
+}
+
 /* google search bar section */
 .google-search-bar {
 	grid-area: search;
