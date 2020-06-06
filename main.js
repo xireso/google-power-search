@@ -1,13 +1,28 @@
-function updateSearchString() {
-	var input = '';
-	input = input + document.getElementsByClassName('exact')[1].value;
-	string = '"' + input + '"';
-	document.getElementById('searchString').innerHTML = string;
+var searchStringElements = new Array(14);
+
+function updateExact() {
+	var exact =  '"' + document.getElementsByClassName('exact')[1].value + '"';
+	searchStringElements[0] = exact;
+	updateSearchString(createString());
 }
 
-URL = 'https://google.com/search?q=where+have+all+the+flowers+gone';
+function updateSearchString(searchString) {
+	document.getElementById('searchString').innerHTML = searchString;
+}
+
+function createString() {
+	var searchString = ""
+	for (i = 0; i < searchStringElements.length; i++) {
+		if (searchStringElements[i] != undefined) {
+			searchString = searchString + searchStringElements[i];
+		}
+	}
+	return searchString;
+}
+
 
 function searchGoogle() {
+	URL = 'https://google.com/search?q=' + createString();
 	window.open(URL);
 }
 
@@ -17,6 +32,12 @@ console.log(document.getElementsByClassName('exact'));
 function intitleAnySelector() {}
 
 function intitleAllSelector() {}
+
+/**var input = '';
+	input = input + document.getElementsByClassName('exact')[1].value;
+	exact = '"' + input + '"';
+	document.getElementById('searchString').innerHTML = exact;
+**/
 
 // Select Any / All for text in URL
 function inurlAnySelector() {}
