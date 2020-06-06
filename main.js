@@ -283,13 +283,47 @@ function scaleFontSize(element) {
 	// Reset font-size to 100% to begin
 	container.style.fontSize = '120%';
 
-	console.log(container.scrollWidth);
-
-	console.log(container.clientWidth);
+	// console.log(container.scrollWidth);
+	// console.log(container.clientWidth);
 
 	// Check if the text is wider than its container,
 	// if so then reduce font-size
 	if (container.scrollHeight > container.clientHeight || container.scrollWidth > container.clientWidth) {
 		container.style.fontSize = '80%';
+	}
+}
+
+function clearAll() {
+	clearAllInputs();
+	clearAllSelections();
+}
+
+function clearAllInputs() {
+	// get every input element and clear the values
+	var inputElements = document.getElementsByTagName('input');
+
+	for (var i = 0; i < inputElements.length; i++) {
+		if (inputElements[i].type == 'text') {
+			inputElements[i].value = '';
+		}
+	}
+
+	// reset search string elements to all be empty again
+	searchStringElements = new Array(13);
+}
+
+function clearAllSelections() {
+	// reset file types selected
+	narrowFiles = [];
+	excludeFiles = [];
+
+	// turn all highlighted file buttons back into unhighlighted
+	let fileButtons = document.getElementsByClassName('filetype');
+	for (button of fileButtons) {
+		if (button.classList.contains('button-highlight')) {
+			console.log(button);
+			button.classList.add('button');
+			button.classList.remove('button-highlight');
+		}
 	}
 }

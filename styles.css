@@ -112,6 +112,22 @@ button {
 	margin-top: 4%;
 }
 
+.clear-button {
+	font-family: Roboto;
+	position: absolute;
+	right: 5%;
+	top: 6%;
+	padding: 10px;
+	border-radius: 9px;
+	border: none;
+
+	background-color: rgba(255, 255, 255, 0.7);
+}
+
+.clear-button:hover {
+	background-color: rgba(255, 255, 255, 0.9);
+}
+
 /* grid for sections */
 
 .grid {
