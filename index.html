@@ -73,28 +73,28 @@
             <div class="specific-pages vertical"></div>
 
             <div class="intitle module">
-                <button type="button" class="intitle button" id="intitle-any" onclick="intitleAnySelector()">Any</button>
+                <button type="button" class="intitle button-highlight" id="intitle-any" onclick="intitleAnySelector()">Any</button>
                 <button type="button" class="intitle button" id="intitle-all" onclick="intitleAllSelector()">All</button>
                 <label for="intitle">of these terms in the <b>title</b></label><br>
                 <input type="text" class="intitle field" value="" placeholder="word1, word2, phrase3">
             </div>
 
             <div class="inurl module">
-                <button type="button" class="url button" id="inurl-any" onclick="inurlAnySelector()">Any</button>
+                <button type="button" class="url button-highlight" id="inurl-any" onclick="inurlAnySelector()">Any</button>
                 <button type="button" class="url button" id="inurl-all" onclick="inurlAllSelector()">All</button>
                 <label for="inurl">of these terms in the <b>URL</b></label><br>
                 <input type="text" class="inurl field" value="" placeholder="word1, word2, phrase3">
             </div>
             
             <div class="intext module">
-                <button type="button" class="intext button" id="intext-any" onclick="intextAnySelector()">Any</button>
+                <button type="button" class="intext button-highlight" id="intext-any" onclick="intextAnySelector()">Any</button>
                 <button type="button" class="intext button" id="intext-all" onclick="intextAllSelector()">All</button>
                 <label for="intext">of these terms in the <b>text</b></label><br>
                 <input type="text" class="intext field" value="" placeholder="word1, word2, phrase3">
             </div>
 
             <div class="inlinks module">
-                <button type="button" class="inlinks button" id="inlinks-any" onclick="inlinksAnySelector()">Any</button>
+                <button type="button" class="inlinks button-highlight" id="inlinks-any" onclick="inlinksAnySelector()">Any</button>
                 <button type="button" class="inlinks button" id="inlinks-all" onclick="inlinksAllSelector()">All</button>
                 <label for="inlinks">terms in <b>links</b> on the page</label><br>
                 <input type="text" class="inlinks field" value="" placeholder="word1, word2, phrase3">
@@ -111,14 +111,14 @@
 
             <div class="filetype module">
                 <label for="filetype">By <b>file type</b></label><br>
-                <button type="button" class="filetype button" id="pdf-file" onclick="pdfSpecificSelector()">.pdf</button>
-                <button type="button" class="filetype button" id="txt-file" onclick="txtSpecificSelector()">.txt</button>
-                <button type="button" class="filetype button" id="rtf-file" onclick="rtfSpecificSelector()">.rtf</button>
-                <button type="button" class="filetype button" id="svg-file" onclick="svgSpecificSelector()">.svg</button>
-                <button type="button" class="filetype button" id="doc-file" onclick="docSpecificSelector()">.doc</button><br>
-                <button type="button" class="filetype button" id="tex-file" onclick="texSpecificSelector()">.tex</button>
-                <button type="button" class="filetype button" id="xls-file" onclick="xlsSpecificSelector()">.xls</button>
-                <button type="button" class="filetype button" id="ppt-file" onclick="pptSpecificSelector()">.ppt</button>
+                <button type="button" class="filetype button" id="pdf-file-narrow" onclick="pdfSpecificSelector()">.pdf</button>
+                <button type="button" class="filetype button" id="txt-file-narrow" onclick="txtSpecificSelector()">.txt</button>
+                <button type="button" class="filetype button" id="rtf-file-narrow" onclick="rtfSpecificSelector()">.rtf</button>
+                <button type="button" class="filetype button" id="svg-file-narrow" onclick="svgSpecificSelector()">.svg</button>
+                <button type="button" class="filetype button" id="doc-file-narrow" onclick="docSpecificSelector()">.doc</button><br>
+                <button type="button" class="filetype button" id="tex-file-narrow" onclick="texSpecificSelector()">.tex</button>
+                <button type="button" class="filetype button" id="xls-file-narrow" onclick="xlsSpecificSelector()">.xls</button>
+                <button type="button" class="filetype button" id="ppt-file-narrow" onclick="pptSpecificSelector()">.ppt</button>
                 <input type="text" id="filetype-field" value="" placeholder="enter file type">
             </div>
 
@@ -148,14 +148,14 @@
 
             <div class="filetype module">
                 <label for="filetype">By <b>file type</b></label><br>
-                <button type="button" class="filetype button" id="pdf-file" onclick="pdfExcludeSelector()">.pdf</button>
-                <button type="button" class="filetype button" id="txt-file" onclick="txtExcludeSelector()">.txt</button>
-                <button type="button" class="filetype button" id="rtf-file" onclick="rtfExcludeSelector()">.rtf</button>
-                <button type="button" class="filetype button" id="svg-file" onclick="svgExcludeSelector()">.svg</button>
-                <button type="button" class="filetype button" id="doc-file" onclick="docExcludeSelector()">.doc</button><br>
-                <button type="button" class="filetype button" id="tex-file" onclick="texExcludeSelector()">.tex</button>
-                <button type="button" class="filetype button" id="xls-file" onclick="xlsExcludeSelector()">.xls</button>
-                <button type="button" class="filetype button" id="ppt-file" onclick="pptExcludeSelector()">.ppt</button>
+                <button type="button" class="filetype button" id="pdf-file-exclude" onclick="pdfExcludeSelector()">.pdf</button>
+                <button type="button" class="filetype button" id="txt-file-exclude" onclick="txtExcludeSelector()">.txt</button>
+                <button type="button" class="filetype button" id="rtf-file-exclude" onclick="rtfExcludeSelector()">.rtf</button>
+                <button type="button" class="filetype button" id="svg-file-exclude" onclick="svgExcludeSelector()">.svg</button>
+                <button type="button" class="filetype button" id="doc-file-exclude" onclick="docExcludeSelector()">.doc</button><br>
+                <button type="button" class="filetype button" id="tex-file-exclude" onclick="texExcludeSelector()">.tex</button>
+                <button type="button" class="filetype button" id="xls-file-exclude" onclick="xlsExcludeSelector()">.xls</button>
+                <button type="button" class="filetype button" id="ppt-file-exclude" onclick="pptExcludeSelector()">.ppt</button>
                 <input type="text" id="filetype-field" value="" placeholder="enter file type">
             </div>
         </div>
@@ -169,7 +169,7 @@
             <h1 class="search-header">Generated Google Search String</h1>
 
             <div class="search-bar"> 
-                <textarea readonly id="searchString" rows='1' cols='40'>Filler</textarea>
+                <input type=text id="searchString" rows='1' cols='40' value='Filler'>
                 <button class="search-button" onclick="searchGoogle()">
                     Search google
                 </button>

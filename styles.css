@@ -239,6 +239,24 @@ html {
 	color: var(--green-dim);
 }
 
+.exclude-results .button {
+	border: none;
+	border-radius: 2;
+	margin: 0;
+
+	color: var(--green-dim);
+	background-color: var(--green-light);
+}
+
+.exclude-results .button-highlight {
+	border: none;
+	border-radius: 2;
+	margin: 0;
+
+	color: white;
+	background-color: var(--green-dark);
+}
+
 /* google search bar section */
 .google-search-bar {
 	grid-area: search;
@@ -263,12 +281,6 @@ html {
 	font-size: 1.3rem;
 	display: inline-block;
 	margin-left: 4%;
-	white-space: nowrap;
-
-	border-style: none;
-	border-color: Transparent;
-	background-color: transparent;
-	resize: none;
 }
 
 .search-button {
