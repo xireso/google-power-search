@@ -145,10 +145,6 @@ button {
 	grid-area: find;
 }
 
-#find-pages-header {
-	color: var(--blue);
-}
-
 .find-pages .vertical {
 	box-shadow: -1px 0px 4px var(--blue-dim);
 	height: 255px;
@@ -183,10 +179,6 @@ button {
 /* specific section (red) */
 .specific-pages {
 	grid-area: specific;
-}
-
-#specific-header {
-	color: var(--red);
 }
 
 .specific-pages .vertical {
@@ -235,10 +227,6 @@ button {
 	grid-area: narrow;
 }
 
-#narrow-header {
-	color: var(--yellow);
-}
-
 .narrow-results .vertical {
 	box-shadow: -1px 0px 4px var(--yellow-dim);
 	height: 148px;
@@ -277,10 +265,6 @@ button {
 /* exclude results section */
 .exclude-results {
 	grid-area: exclude;
-}
-
-#exclude-header {
-	color: var(--green);
 }
 
 .exclude-results .vertical {
@@ -390,4 +374,99 @@ button {
 .search-background {
 	display: block;
 	width: 100%;
+}
+
+.example-modal-button {
+	font-family: Roboto;
+	font-size: 18px;
+	font-weight: bold;
+	position: absolute;
+	left: 20%;
+	top: 11%;
+	padding: 10px;
+	border-radius: 9px;
+	border: 4px solid grey;
+	background-color: rgba(249, 228, 183, .95);
+}
+
+.help-modal-button {
+	font-family: Roboto;
+	font-size: 18px;
+	font-weight: bold;
+	position: absolute;
+	left: 10%;
+	top: 11%;
+	padding: 10px;
+	border-radius: 9px;
+	border: 4px solid blue;
+	background-color: rgba(249, 228, 183, .95);
+}
+
+/* 
+Background of the Modal Box
+ - a semi-transparent background when modal active 
+ */
+.modal {
+	display: none; /* starts hidden */
+	position: fixed;
+	z-index: 1; /* top of screen */
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto; 
+	background-color: rgb(0,0,0);
+	background-color: rgba(0,0,0,0.4);
+}
+
+/* Content of the Modal Box */
+.modal-content {
+	background-color: #f5f4c2;
+	margin: 6% auto; /* x% from top + auto-centered */
+	padding: 20px; 
+	border: 1px solid #888;
+	width: 33%; /*vary depending on screen dimensions*/
+	animation-name: animatetop;
+	animation-duration: .4s;
+}
+
+/* add animation */
+@keyframes animatetop {
+	from {top: -300px; opacity: 0}
+	to {top: 0; opacity: 1}
+}
+
+/* Close button! */
+.close {
+	color: #aaa;
+	float: right; /* orientation of the close button */
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+} 
+
+.blue-header {
+	color: var(--blue);
+}
+
+.red-header {
+	color: var(--red);
+}
+
+.yellow-header {
+	color: var(--yellow);
+}
+
+.green-header {
+	color: var(--green);
+}
+
+.center {
+	text-align: center;
 }
