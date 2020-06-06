@@ -126,7 +126,7 @@ function getLogicOp(operator, keywordArray) {
 function updateSearchString() {
 	let searchString = '';
 	for (searchElement of searchStringElements) {
-		if (searchElement != undefined) searchString += ' ' + searchElement;
+		if (searchElement != undefined) searchString += searchElement + ' ';
 	}
 	document.getElementById('searchString').value = searchString;
 }
