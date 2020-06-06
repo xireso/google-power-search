@@ -68,6 +68,25 @@ function updateAll() {
 }
 
 /**
+ * called when apart module modified
+ * creates two keywords with AROUND(X) in between where
+ * X represents min space apart for two words
+ */
+function updateApart() {
+	let keyword1 = document.getElementById('keyword1').value;
+	let keyword2 = document.getElementById('keyword2').value;
+	let apartNum = document.getElementById('numWordsApart').value;
+
+	let aroundString = ' AROUND(' + apartNum + ') ';
+	let apartString = keyword1 + aroundString + keyword2;
+	console.log(apartString);
+
+	searchStringElements[aroundIndex] = apartString;
+
+	updateSearchString();
+}
+
+/**
  * Creates a string with AND or OR between keywords
  * @param {String} operator AND or OR
  * @param {Array} keywordArray words to put operator between
@@ -75,7 +94,7 @@ function updateAll() {
 function getLogicOp(operator, keywordArray) {
 	let out = '';
 	if (keywordArray.length == 0) {
-		return out
+		return out;
 	}
 	//if there is only one word, done
 	if (keywordArray.length == 1) {
