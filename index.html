@@ -18,7 +18,7 @@
 
 <body>
 
-<!-- Module for "Find pages with: -->
+<!-- Module for "Find pages with:" -->
     <div class="find-pages big-section">
 
         <h1 id="find-pages-header">Find pages with</h1>
@@ -58,7 +58,7 @@
         </div>
     </div>
 
-<!-- Module for "Pages with appearances of: -->
+<!-- Module for "Pages with appearances of:" -->
     <div class="specific-pages big-section">
 
         <h1 id="specific-header">Pages with appearances of</h1>
@@ -89,6 +89,61 @@
             <button type="button" class="inlinks button" id="inlinks-all" onclick="inlinksAllSelector()">All</button>
             <label for="inlinks">of these terms in <b>links</b> on the page</label><br>
             <input type="text" class="inlinks field" value="" placeholder="word1, word2, phrase3"><br>
+        </div>
+    </div>
+
+
+<!-- Module for "Narrow down results:" -->
+    <div class="specific-results big-section">
+
+        <h1 id="specific-header">Narrow down results:</h1>
+
+        <div class="filetype module">
+            <label for="filetype">By <b>file type</b></label><br>
+            <button type="button" class="filetype button" id="pdf-file" onclick="pdfSpecificSelector()">.pdf</button>
+            <button type="button" class="filetype button" id="txt-file" onclick="txtSpecificSelector()">.txt</button>
+            <button type="button" class="filetype button" id="rtf-file" onclick="rtfSpecificSelector()">.rtf</button>
+            <button type="button" class="filetype button" id="svg-file" onclick="svgSpecificSelector()">.svg</button>
+            <button type="button" class="filetype button" id="doc-file" onclick="docSpecificSelector()">.doc</button><br>
+            <button type="button" class="filetype button" id="tex-file" onclick="texSpecificSelector()">.tex</button>
+            <button type="button" class="filetype button" id="xls-file" onclick="xlsSpecificSelector()">.xls</button>
+            <button type="button" class="filetype button" id="ppt-file" onclick="pptSpecificSelector()">.ppt</button>
+            <input type="text" id="filetype-field" value="" placeholder="enter file type"><br><br> 
+        </div>
+
+        <div class="domain module">
+            <label for="domain">By <b>website/domain</b></label><br>
+            <input type="text" class="domain field" value="" placeholder="reddit.com / .gov / .jp"><br><br>
+        </div>
+    </div>
+
+
+<!-- Module for "Exclude results:" -->
+    <div class="specific-results big-section">
+
+        <h1 id="specific-header">Exclude results:</h1>
+
+        <div class="filetype module">
+            <label for="filetype">By <b>file type</b></label><br>
+            <button type="button" class="filetype button" id="pdf-file" onclick="pdfExcludeSelector()">.pdf</button>
+            <button type="button" class="filetype button" id="txt-file" onclick="txtExcludeSelector()">.txt</button>
+            <button type="button" class="filetype button" id="rtf-file" onclick="rtfExcludeSelector()">.rtf</button>
+            <button type="button" class="filetype button" id="svg-file" onclick="svgExcludeSelector()">.svg</button>
+            <button type="button" class="filetype button" id="doc-file" onclick="docExcludeSelector()">.doc</button><br>
+            <button type="button" class="filetype button" id="tex-file" onclick="texExcludeSelector()">.tex</button>
+            <button type="button" class="filetype button" id="xls-file" onclick="xlsExcludeSelector()">.xls</button>
+            <button type="button" class="filetype button" id="ppt-file" onclick="pptExcludeSelector()">.ppt</button>
+            <input type="text" id="filetype-field" value="" placeholder="enter file type"><br><br> 
+        </div>
+
+        <div class="domain module">
+            <label for="domain">Containing <b>keywords</b></label><br>
+            <input type="text" class="domain field" value="" placeholder="trek"><br><br>
+        </div>
+
+        <div class="domain module">
+            <label for="domain">From <b>website/domain</b></label><br>            
+            <input type="text" class="domain field" value="" placeholder="wikipedia.org / .edu / .uk"><br><br>
         </div>
     </div>
 
