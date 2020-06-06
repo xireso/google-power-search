@@ -32,7 +32,7 @@
                 <label for="all"><b>All</b> of these keywords <p class="sidenote">(default search)</p></label><br>
                 <input type="text" class="all field"
                     value=""
-                    placeholder="saturday night live"
+                    placeholder="ex. saturday night live"
                     onkeyup="updateAll()"
                 >
             </div>
@@ -41,7 +41,7 @@
                 <label for="any"><b>Any</b> of these keywords</label><br>
                 <input type="text" class="any field"
                     value=""
-                    placeholder="coronavirus COVID"
+                    placeholder="ex. coronavirus COVID"
                     onkeyup="updateAny()"
                 >
                 <br>
@@ -51,7 +51,7 @@
                 <label for="exact">This <b>exact</b> word or phrase</label><br>
                 <input type="text" class="exact field" 
                     value="" 
-                    placeholder="may the force be with you"
+                    placeholder="ex. may the force be with you"
                     onkeyup="updateExact()"
                 >
             </div>
@@ -59,9 +59,9 @@
 
             <div class="apart module">
                 <p>
-                    <input type="text" class="apart field" id="keyword1" value="" placeholder="pop" onkeyup="updateApart()">
+                    <input type="text" class="apart field" id="keyword1" value="" placeholder="ex. pop" onkeyup="updateApart()">
                     and
-                    <input type="text" class="apart field" id="keyword2" value="" placeholder="culture" onkeyup="updateApart()"><br>
+                    <input type="text" class="apart field" id="keyword2" value="" placeholder="ex. culture" onkeyup="updateApart()"><br>
                     less than
                     <input type="text" class="apart field" id="numWordsApart" value="" placeholder="4" onkeyup="updateApart()">
                     words apart
@@ -81,28 +81,28 @@
                 <button type="button" class="intitle button-highlight" id="intitle-any" onclick="anyAllToggle('intitle', true)">Any</button>
                 <button type="button" class="intitle button" id="intitle-all" onclick="anyAllToggle('intitle', false)">All</button>
                 <label for="intitle">of these terms in the <b>title</b></label><br>
-                <input type="text" class="intitle field" value="" placeholder="word1, word2, phrase3">
+                <input type="text" class="intitle field" value="" placeholder="ex. hack the northeast">
             </div>
 
             <div class="inurl module">
                 <button type="button" class="url button-highlight" id="inurl-any" onclick="anyAllToggle('inurl', true)">Any</button>
                 <button type="button" class="url button" id="inurl-all" onclick="anyAllToggle('inurl', false)">All</button>
                 <label for="inurl">of these terms in the <b>URL</b></label><br>
-                <input type="text" class="inurl field" value="" placeholder="word1, word2, phrase3">
+                <input type="text" class="inurl field" value="" placeholder="ex. hackathon cs">
             </div>
             
             <div class="intext module">
                 <button type="button" class="intext button-highlight" id="intext-any" onclick="anyAllToggle('intext', true)">Any</button>
                 <button type="button" class="intext button" id="intext-all" onclick="anyAllToggle('intext', false)">All</button>
                 <label for="intext">of these terms in the <b>text</b></label><br>
-                <input type="text" class="intext field" value="" placeholder="word1, word2, phrase3">
+                <input type="text" class="intext field" value="" placeholder="ex. javascript workshop">
             </div>
 
             <div class="inlinks module">
                 <button type="button" class="inlinks button-highlight" id="inlinks-any" onclick="anyAllToggle('inlinks', true)">Any</button>
                 <button type="button" class="inlinks button" id="inlinks-all" onclick="anyAllToggle('inlinks', false)">All</button>
                 <label for="inlinks">terms in <b>links</b> on the page</label><br>
-                <input type="text" class="inlinks field" value="" placeholder="word1, word2, phrase3">
+                <input type="text" class="inlinks field" value="" placeholder="ex. react resource">
             </div>
         </div>
 
@@ -129,7 +129,7 @@
 
             <div class="domain module">
                 <label for="domain">By <b>website/domain</b></label><br>
-                <input type="text" class="domain field" value="" placeholder="reddit.com / .gov / .jp">
+                <input type="text" class="domain field" value="" placeholder="ex. reddit.com .edu .gov .jp" onkeyup="updateDomain('narrow')">
             </div>
         </div>
 
@@ -141,14 +141,14 @@
 
             <div class="exclude-results vertical"></div>
 
-            <div class="domain module">
-                <label for="domain">Containing <b>keywords</b></label><br>
-                <input type="text" class="domain field" value="" placeholder="trek"><br>
+            <div class="exclude-keywords module">
+                <label for="exclude-keywords">Containing <b>keywords</b></label><br>
+                <input type="text" class="exclude-keywords field" value="" placeholder="ex. ipad iphone" onkeyup="updateExcludeKeywords()"><br>
             </div>
 
             <div class="domain module">
                 <label for="domain">From <b>website/domain</b></label><br>            
-                <input type="text" class="domain field" value="" placeholder="wikipedia.org / .edu / .uk"><br>
+                <input type="text" class="domain field" value="" placeholder="ex. urbandictionary.com" onkeyup="updateDomain('exclude')"><br>
             </div>
 
             <div class="filetype module">

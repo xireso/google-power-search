@@ -1,48 +1,48 @@
 //record for search bar
 var searchStringElements = new Array(13);
-// record of selected files for narrowing search
+
+// record of selected file types for narrowing or excluding
 var narrowFiles = [];
 var excludeFiles = [];
+
 //CONSTANTS
 //Find pages with
 const exactIndex = 2;
 const anyIndex = 1;
 const allIndex = 0;
 const aroundIndex = 3;
+
 //Pages with appearancees of
 const titleIndex = 4;
 const urlIndex = 5;
 const textIndex = 6;
 const linksIndex = 7;
+
 //Narrow down results
 const fileTypeIndex = 8;
 const byDomainIndex = 9;
+
 //Exclude results
 const excludeKeywordsIndex = 10;
 const excludeDomainIndex = 11;
 const excludeFileTypeIndex = 12;
 
 //Logic operators
-const anyOp = 'OR';
+const anyOp = '|';
 const allOp = 'AND';
 
 //delimiter to separate keywords
 const delimiter = ' ';
+
 //file type length
 const fileNameLength = 3;
 
 /**
- * called when exact module modified.
- * creates string with quotes on either side
+ * called when all module modified
+ * creates string of keywords separated by AND
  */
-function updateExact() {
-	let exact = '"' + document.getElementsByClassName('exact')[1].value + '"';
-	if (exact != '""') {
-		searchStringElements[exactIndex] = exact;
-	} else {
-		//else here to make sure "" not left if exact phrase is deleted
-		searchStringElements[exactIndex] = undefined;
-	}
+function updateAll() {
+	searchStringElements[allIndex] = document.getElementsByClassName('all')[1].value;
 	updateSearchString();
 }
 
@@ -58,11 +58,17 @@ function updateAny() {
 }
 
 /**
- * called when all module modified
- * creates string of keywords separated by AND
+ * called when exact module modified.
+ * creates string with quotes on either side
  */
-function updateAll() {
-	searchStringElements[allIndex] = document.getElementsByClassName('all')[1].value;
+function updateExact() {
+	let exact = '"' + document.getElementsByClassName('exact')[1].value + '"';
+	if (exact != '""') {
+		searchStringElements[exactIndex] = exact;
+	} else {
+		//else here to make sure "" not left if exact phrase is deleted
+		searchStringElements[exactIndex] = undefined;
+	}
 	updateSearchString();
 }
 
@@ -85,6 +91,45 @@ function updateApart() {
 	} else {
 		//else here to make sure "" not left if exact phrase is deleted
 		searchStringElements[aroundIndex] = undefined;
+	}
+
+	updateSearchString();
+}
+
+/**
+ * called when domain module is modified either in narrow section or exclude section
+ * creates string with site: in front of website / domain entered if in narrow section
+ * and adds -site in front of domain  if in exclude section
+ */
+function updateDomain(excludeOrNarrow) {
+	// default: if add domain (in narrow section), site: and join with OR
+	let sitePrefix = 'site:';
+	let operator = anyOp;
+	let elementIndex = 1;
+	let indexType = byDomainIndex;
+
+	// if user wants to exclude domains, add - in front and join with AND
+	if (excludeOrNarrow === 'exclude') {
+		sitePrefix = '-' + sitePrefix;
+		operator = allOp;
+		elementIndex = 3;
+		indexType = excludeDomainIndex;
+	}
+
+	let domains = document.getElementsByClassName('domain')[elementIndex].value;
+
+	if (domains) {
+		let delimit = domains.split(delimiter);
+		let domainList = [];
+
+		for (const domain of delimit) {
+			domainList.push(sitePrefix + domain);
+		}
+
+		searchStringElements[indexType] = getLogicOp(operator, domainList);
+	} else {
+		//else here to make sure site: not left if content in field is deleted
+		searchStringElements[indexType] = undefined;
 	}
 
 	updateSearchString();
