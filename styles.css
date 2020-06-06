@@ -76,6 +76,26 @@ html {
 	font-weight: normal;
 }
 
+button {
+	border: none;
+	border-radius: 7px;
+	padding: 3px 8px;
+	margin: 5px 2px;
+
+	color: black;
+}
+
+/* page title */
+
+.page-title {
+	color: white;
+	text-align: center;
+	font-size: 2rem;
+	margin-top: 4%;
+}
+
+/* grid for sections */
+
 .grid {
 	display: grid;
 
@@ -84,13 +104,6 @@ html {
 	grid-template-rows: 30% 10% auto;
 
 	padding: 2%;
-}
-
-.page-title {
-	color: white;
-	text-align: center;
-	font-size: 2rem;
-	margin-top: 4%;
 }
 
 /* find pages section (blue) */
@@ -157,8 +170,7 @@ html {
 }
 
 .specific-pages .button {
-	border: none;
-	border-radius: 2;
+	border-radius: 2px;
 	margin: 0;
 
 	color: var(--red-dim);
@@ -166,11 +178,11 @@ html {
 }
 
 .specific-pages .button-highlight {
-	border: none;
-	border-radius: 2;
+	border-radius: 2px;
 	margin: 0;
 
 	color: white;
+	font-weight: bold;
 	background-color: var(--red-dark);
 }
 /* narrow down results section */
@@ -198,20 +210,13 @@ html {
 }
 
 .narrow-results .button {
-	border: none;
-	border-radius: 2;
-	margin: 0;
-
-	color: var(--yellow-dim);
+	color: #2d2d2d;
 	background-color: var(--yellow-light);
 }
 
 .narrow-results .button-highlight {
-	border: none;
-	border-radius: 2;
-	margin: 0;
-
 	color: white;
+	font-weight: 600;
 	background-color: var(--yellow-dark);
 }
 
@@ -240,20 +245,13 @@ html {
 }
 
 .exclude-results .button {
-	border: none;
-	border-radius: 2;
-	margin: 0;
-
-	color: var(--green-dim);
+	color: #2d2d2d;
 	background-color: var(--green-light);
 }
 
 .exclude-results .button-highlight {
-	border: none;
-	border-radius: 2;
-	margin: 0;
-
 	color: white;
+	font-weight: 600;
 	background-color: var(--green-dark);
 }
 
@@ -277,15 +275,29 @@ html {
 }
 
 #searchString {
+	display: inline-block;
+
 	font-family: "Roboto Slab";
 	font-size: 1.3rem;
-	display: inline-block;
-	margin-left: 4%;
+	margin: 20px;
+	width: 82%;
+
+	background-color: transparent;
+	border: none;
+
+	background: -webkit-linear-gradient(
+		5deg,
+		rgba(66, 133, 244, 1) 0%,
+		rgba(15, 157, 88, 1) 41.15%,
+		rgba(244, 180, 0, 1) 73.44%,
+		rgba(219, 68, 55, 1) 100%
+	);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 .search-button {
 	display: inline-block;
-
 	border: none;
 	border-radius: 14px;
 
