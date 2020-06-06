@@ -1,4 +1,8 @@
+//record for search bar
 var searchStringElements = new Array(13);
+// record of selected files for narrowing search
+var selectedFiles = [];
+//CONSTANTS
 //Find pages with
 const exactIndex = 0;
 const anyIndex = 1;
@@ -23,6 +27,8 @@ const allOp = 'AND';
 
 //delimiter to separate keywords
 const delimiter = ',';
+//file type length
+const fileNameLength = 3;
 
 
 /**
@@ -36,7 +42,7 @@ function updateExact() {
 	} else { //else here to make sure "" not left if exact phrase is deleted
 		searchStringElements[exactIndex] = undefined;
 	}
-	updateSearchString(createString());
+	updateSearchString();
 }
 
 /**
@@ -44,8 +50,10 @@ function updateExact() {
  * creates string of keywords separated by OR
  */
 function updateAny() {
-	searchStringElements[anyIndex] = getLogicOp('any', anyOp, 1);
-	updateSearchString(createString());
+	let input = document.getElementsByClassName(any)[1].value;
+	let delimit = input.split(delimiter);
+	searchStringElements[anyIndex] = getLogicOp(anyOp, delimit);
+	updateSearchString();
 }
 
 /**
@@ -53,39 +61,37 @@ function updateAny() {
  * creates string of keywords separated by AND
  */
 function updateAll() {
-	searchStringElements[allIndex] = getLogicOp('all', allOp, 1);
-	updateSearchString(createString());
+	let input = document.getElementsByClassName(all)[1].value;
+	let delimit = input.split(delimiter);
+	searchStringElements[allIndex] = getLogicOp(allOp, delimit);
+	updateSearchString();
 }
 
 /**
- * Creates a string of either AND or OR based on user input
- * @param {String} logicFunc specific module in HTML
+ * Creates a string with AND or OR between keywords
  * @param {String} operator AND or OR
- * @param {int} inputIndex where input is located within module
+ * @param {Array} keywordArray words to put operator between
  */
-function getLogicOp(logicFunc, operator, inputIndex) {
-	let input = document.getElementsByClassName(logicFunc)[inputIndex].value;
-	let delimit = input.split(delimiter);
-
+function getLogicOp(operator, keywordArray) {
 	let out = '';
 	//if there is only one word, done
-	if (delimit.length == 1) {
+	if (keywordArray.length == 1) {
 		return input;
 	}
 
 	//creates logic line
 	out = '(';
-	for (i = 0; i < delimit.length - 1; i++) {
-		delimit[i + 1] = delimit[i + 1].trim();
+	for (i = 0; i < keywordArray.length - 1; i++) {
+		keywordArray[i + 1] = keywordArray[i + 1].trim();
 		//if-else to make sure that there is no operator w/out another keyword on right
-		if (delimit[i + 1] != '') out += ' ' + delimit[i] + ' ' + operator;
-		else out += ' ' + delimit[i];
+		if (keywordArray[i + 1] != '') out += ' ' + keywordArray[i] + ' ' + operator;
+		else out += ' ' + keywordArray[i];
 	}
 
 	//fixes bug that adds space when comma with no letters after it typed
-	if ('' == delimit[delimit.length - 1].trim()) return out + ' )';
+	if ('' == keywordArray[keywordArray.length - 1].trim()) return out + ' )';
 	//closes parentheses
-	out += ' ' + delimit[delimit.length - 1] + ' )';
+	out += ' ' + keywordArray[keywordArray.length - 1] + ' )';
 	return out;
 }
 
@@ -93,20 +99,11 @@ function getLogicOp(logicFunc, operator, inputIndex) {
  * Updates search bar based on user's input
  */
 function updateSearchString() {
-	document.getElementById('searchString').value = createString();
-}
-
-/**
- * Constructs the string seen by the user, based on values in the array
- */
-function createString() {
 	var searchString = '';
-	for (i = 0; i < searchStringElements.length; i++) {
-		if (searchStringElements[i] != undefined) {
-			searchString += ' ' + searchStringElements[i];
-		}
+	for (searchElement of searchStringElements) {
+		if (searchElement != undefined) searchString += ' ' + searchElement;
 	}
-	return searchString;
+	document.getElementById('searchString').value = searchString;
 }
 
 /**
@@ -144,10 +141,24 @@ function fileTypeToggle(idName) {
 	if (filetype.classList.contains('button-highlight')) {
 		filetype.classList.remove('button-highlight');
 		filetype.classList.add('button');
+		selectedFiles.remove("filetype:" + idName.substring(0,fileNameLength));
 	} else {
 		filetype.classList.remove('button');
 		filetype.classList.add('button-highlight');
+		selectedFiles.push("filetype:" + idName.substring(0,fileNameLength));
 	}
+	updateNarrowFiles();
+}
+
+function updateNarrowFiles() {
+	searchStringElements[fileTypeIndex] = getLogicOp(anyOp,selectedFiles);
+	updateSearchString();
+}
+
+function createString(array) {
+	let out = "";
+	for (str of array) { out += " " + str; }
+	return out;
 }
 
 // Select Any / All for text in Title
