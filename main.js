@@ -24,31 +24,51 @@ const allOp = 'AND';
 //delimiter to separate keywords
 const delimiter = ',';
 
+
+/**
+ * called when exact module modified.
+ * creates string with quotes on either side
+ */
 function updateExact() {
 	var exact = '"' + document.getElementsByClassName('exact')[1].value + '"';
 	if (exact != '""') {
 		searchStringElements[exactIndex] = exact;
-	} else {
+	} else { //else here to make sure "" not left if exact phrase is deleted
 		searchStringElements[exactIndex] = undefined;
 	}
 	updateSearchString(createString());
 }
 
+/**
+ * called when any module modified.
+ * creates string of keywords separated by OR
+ */
 function updateAny() {
-	searchStringElements[anyIndex] = getLogicOp('any', 'OR', 1);
+	searchStringElements[anyIndex] = getLogicOp('any', anyOp, 1);
 	updateSearchString(createString());
 }
 
+/**
+ * called when all module modified
+ * creates string of keywords separated by AND
+ */
 function updateAll() {
-	searchStringElements[allIndex] = getLogicOp('all', 'AND', 1);
+	searchStringElements[allIndex] = getLogicOp('all', allOp, 1);
 	updateSearchString(createString());
 }
 
+/**
+ * Creates a string of either AND or OR based on user input
+ * @param {String} logicFunc specific module in HTML
+ * @param {String} operator AND or OR
+ * @param {int} inputIndex where input is located within module
+ */
 function getLogicOp(logicFunc, operator, inputIndex) {
 	let input = document.getElementsByClassName(logicFunc)[inputIndex].value;
 	let delimit = input.split(delimiter);
 
 	let out = '';
+	//if there is only one word, done
 	if (delimit.length == 1) {
 		return input;
 	}
@@ -57,7 +77,7 @@ function getLogicOp(logicFunc, operator, inputIndex) {
 	out = '(';
 	for (i = 0; i < delimit.length - 1; i++) {
 		delimit[i + 1] = delimit[i + 1].trim();
-		//if else to make sure that there is no operator w/out another keyword on right
+		//if-else to make sure that there is no operator w/out another keyword on right
 		if (delimit[i + 1] != '') out += ' ' + delimit[i] + ' ' + operator;
 		else out += ' ' + delimit[i];
 	}
@@ -69,10 +89,16 @@ function getLogicOp(logicFunc, operator, inputIndex) {
 	return out;
 }
 
-function updateSearchString(searchString) {
-	document.getElementById('searchString').value = searchString;
+/**
+ * Updates search bar based on user's input
+ */
+function updateSearchString() {
+	document.getElementById('searchString').value = createString();
 }
 
+/**
+ * Constructs the string seen by the user, based on values in the array
+ */
 function createString() {
 	var searchString = '';
 	for (i = 0; i < searchStringElements.length; i++) {
@@ -83,12 +109,13 @@ function createString() {
 	return searchString;
 }
 
+/**
+ * Searches finished string on google
+ */
 function searchGoogle() {
 	URL = 'https://google.com/search?q=' + createString();
 	window.open(URL);
 }
-
-console.log(document.getElementsByClassName('exact'));
 
 // Select Any / All for text in Title
 // function intitleAnySelector() {
