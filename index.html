@@ -23,6 +23,8 @@
 
         <h1 id="find-pages-header">Find pages with</h1>
 
+        <div class="find-pages vertical"></div>
+
         <div class="exact module">
             <label for="exact">This <b>exact</b> word or phrase</label><br>
             <input type="text" class="exact field" 
@@ -30,7 +32,6 @@
                 placeholder="may the force be with you"
                 onkeyup="updateExact()"
             >
-            <br>
         </div>
 
         <div class="any module">
@@ -45,13 +46,13 @@
 
         <div class="all module">
             <label for="all"><b>All</b> of these keywords</label><br>
-            <input type="text" class="all field" value="" placeholder="star trek, seinfeld"><br>
+            <input type="text" class="all field" value="" placeholder="star trek, seinfeld">
         </div>
 
         <div class="apart module">
             <p>
                 <input type="text" class="apart field" id="keyword1" value="" placeholder="pop">
-                and 
+                and
                 <input type="text" class="apart field" id="keyword2" value="" placeholder="culture"><br>
                 less than
                 <input type="text" class="apart field" id="numWordsApart" value="" placeholder="4">
@@ -64,42 +65,46 @@
 <!-- Module for "Pages with appearances of:" -->
     <div class="specific-pages big-section">
 
-        <h1 id="specific-header">Pages with appearances of</h1><br>
+        <h1 id="specific-header">Pages with appearances of</h1>
+
+        <div class="specific-pages vertical"></div>
 
         <div class="intitle module">
             <button type="button" class="intitle button" id="intitle-any" onclick="intitleAnySelector()">Any</button>
             <button type="button" class="intitle button" id="intitle-all" onclick="intitleAllSelector()">All</button>
             <label for="intitle">of these terms in the <b>title</b></label><br>
-            <input type="text" class="intitle field" value="" placeholder="word1, word2, phrase3"><br><br>
+            <input type="text" class="intitle field" value="" placeholder="word1, word2, phrase3">
         </div>
 
         <div class="inurl module">
             <button type="button" class="url button" id="inurl-any" onclick="inurlAnySelector()">Any</button>
             <button type="button" class="url button" id="inurl-all" onclick="inurlAllSelector()">All</button>
             <label for="inurl">of these terms in the <b>URL</b></label><br>
-            <input type="text" class="inurl field" value="" placeholder="word1, word2, phrase3"><br><br>
+            <input type="text" class="inurl field" value="" placeholder="word1, word2, phrase3">
         </div>
         
         <div class="intext module">
             <button type="button" class="intext button" id="intext-any" onclick="intextAnySelector()">Any</button>
             <button type="button" class="intext button" id="intext-all" onclick="intextAllSelector()">All</button>
             <label for="intext">of these terms in the <b>text</b></label><br>
-            <input type="text" class="intext field" value="" placeholder="word1, word2, phrase3"><br><br>
+            <input type="text" class="intext field" value="" placeholder="word1, word2, phrase3">
         </div>
 
         <div class="inlinks module">
             <button type="button" class="inlinks button" id="inlinks-any" onclick="inlinksAnySelector()">Any</button>
             <button type="button" class="inlinks button" id="inlinks-all" onclick="inlinksAllSelector()">All</button>
             <label for="inlinks">of these terms in <b>links</b> on the page</label><br>
-            <input type="text" class="inlinks field" value="" placeholder="word1, word2, phrase3"><br><br>
+            <input type="text" class="inlinks field" value="" placeholder="word1, word2, phrase3">
         </div>
     </div>
 
 
 <!-- Module for "Narrow down results:" -->
-    <div class="specific-results big-section">
+    <div class="narrow-results big-section">
 
-        <h1 id="specific-header">Narrow down results:</h1>
+        <h1 id="narrow-header">Narrow down results:</h1>
+
+        <div class="narrow-results vertical"></div>
 
         <div class="filetype module">
             <label for="filetype">By <b>file type</b></label><br>
@@ -111,20 +116,32 @@
             <button type="button" class="filetype button" id="tex-file" onclick="texSpecificSelector()">.tex</button>
             <button type="button" class="filetype button" id="xls-file" onclick="xlsSpecificSelector()">.xls</button>
             <button type="button" class="filetype button" id="ppt-file" onclick="pptSpecificSelector()">.ppt</button>
-            <input type="text" id="filetype-field" value="" placeholder="enter file type"><br><br> 
+            <input type="text" id="filetype-field" value="" placeholder="enter file type">
         </div>
 
         <div class="domain module">
             <label for="domain">By <b>website/domain</b></label><br>
-            <input type="text" class="domain field" value="" placeholder="reddit.com / .gov / .jp"><br><br>
+            <input type="text" class="domain field" value="" placeholder="reddit.com / .gov / .jp">
         </div>
     </div>
 
 
 <!-- Module for "Exclude results:" -->
-    <div class="specific-results big-section">
+    <div class="exclude-results big-section">
 
-        <h1 id="specific-header">Exclude results:</h1>
+        <h1 id="exclude-header">Exclude results:</h1>
+
+        <div class="exclude-results vertical"></div>
+
+        <div class="domain module">
+            <label for="domain">Containing <b>keywords</b></label><br>
+            <input type="text" class="domain field" value="" placeholder="trek"><br>
+        </div>
+
+        <div class="domain module">
+            <label for="domain">From <b>website/domain</b></label><br>            
+            <input type="text" class="domain field" value="" placeholder="wikipedia.org / .edu / .uk"><br>
+        </div>
 
         <div class="filetype module">
             <label for="filetype">By <b>file type</b></label><br>
@@ -136,17 +153,7 @@
             <button type="button" class="filetype button" id="tex-file" onclick="texExcludeSelector()">.tex</button>
             <button type="button" class="filetype button" id="xls-file" onclick="xlsExcludeSelector()">.xls</button>
             <button type="button" class="filetype button" id="ppt-file" onclick="pptExcludeSelector()">.ppt</button>
-            <input type="text" id="filetype-field" value="" placeholder="enter file type"><br><br> 
-        </div>
-
-        <div class="domain module">
-            <label for="domain">Containing <b>keywords</b></label><br>
-            <input type="text" class="domain field" value="" placeholder="trek"><br><br>
-        </div>
-
-        <div class="domain module">
-            <label for="domain">From <b>website/domain</b></label><br>            
-            <input type="text" class="domain field" value="" placeholder="wikipedia.org / .edu / .uk"><br><br>
+            <input type="text" id="filetype-field" value="" placeholder="enter file type">
         </div>
     </div>
 
