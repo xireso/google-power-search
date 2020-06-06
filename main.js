@@ -64,7 +64,7 @@ function updateAll() {
 	let input = document.getElementsByClassName('all')[1].value;
 	let delimit = input.split(delimiter);
 	let str = getLogicOp('', delimit);
-	if (str[0] == "(") str = str.substring(2,str.length-2);
+	if (str[0] == '(') str = str.substring(2, str.length - 2);
 	searchStringElements[allIndex] = str;
 	updateSearchString();
 }
@@ -79,11 +79,16 @@ function updateApart() {
 	let keyword2 = document.getElementById('keyword2').value;
 	let apartNum = document.getElementById('numWordsApart').value;
 
-	let aroundString = ' AROUND(' + apartNum + ') ';
-	let apartString = keyword1 + aroundString + keyword2;
-	console.log(apartString);
+	if (apartNum || keyword1 || keyword2) {
+		let aroundString = ' AROUND(' + apartNum + ') ';
+		let apartString = keyword1 + aroundString + keyword2;
+		console.log(apartString);
 
-	searchStringElements[aroundIndex] = apartString;
+		searchStringElements[aroundIndex] = apartString;
+	} else {
+		//else here to make sure "" not left if exact phrase is deleted
+		searchStringElements[aroundIndex] = undefined;
+	}
 
 	updateSearchString();
 }
