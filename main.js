@@ -1,4 +1,9 @@
-// alert('yessss this works!!! much happy');
+function updateSearchString() {
+	var input = '';
+	input = input + document.getElementsByClassName('exact')[1].value;
+	string = '"' + input + '"';
+	document.getElementById('searchString').innerHTML = string;
+}
 
 URL = 'https://google.com/search?q=where+have+all+the+flowers+gone';
 
@@ -9,40 +14,21 @@ function searchGoogle() {
 console.log(document.getElementsByClassName('exact'));
 
 // Select Any / All for text in Title
-function intitleAnySelector() {
+function intitleAnySelector() {}
 
-}
-
-function intitleAllSelector() {
-
-}
-
+function intitleAllSelector() {}
 
 // Select Any / All for text in URL
-function inurlAnySelector() {
-	
-}
+function inurlAnySelector() {}
 
-function inurlAllSelector() {
-
-}
-
+function inurlAllSelector() {}
 
 // Select Any / All for text in Text
-function intextAnySelector() {
-	
-}
+function intextAnySelector() {}
 
-function intextAllSelector() {
-
-}
-
+function intextAllSelector() {}
 
 // Select Any / All for text in Links
-function inlinksAnySelector() {
-	
-}
+function inlinksAnySelector() {}
 
-function inlinksAllSelector() {
-
-}
+function inlinksAllSelector() {}
