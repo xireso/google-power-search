@@ -35,14 +35,14 @@ input {
 	margin-left: 0;
 }
 
-.exact {
+.field {
 	background-color: var(--blue-light);
 	color: var(--blue-dark);
 	font-style: italic;
 	font-weight: bold;
 }
 
-.exact::placeholder {
+.field::placeholder {
 	color: var(--blue-dim);
 }
 

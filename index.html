@@ -17,33 +17,44 @@
 </head>
 
 <body>
-    <h1>Find pages with</h1>
 
-    <div class="find-pages">
-        <div class="exact">
-            <label for="exact label" class="exact label">This <b>exact</b> word or phrase</label><br>
+
+    <div class="find-pages big-section">
+
+        <h1 id="find-pages-header">Find pages with</h1>
+
+        <div class="exact module">
+            <label for="exact">This <b>exact</b> word or phrase</label><br>
             <input type="text" class="exact field" value="" placeholder="may the force be with you"><br>
         </div>
-        <div class="any">
-            <label for="any label" class="any label"><b>Any</b> of these keywords</label><br>
-            <input type="text" class="exact field" value="" placeholder="word1 word2 word3"><br>
+
+        <div class="any module">
+            <label for="any"><b>Any</b> of these keywords</label><br>
+            <input type="text" class="any field" value="" placeholder="word1 word2 word3"><br>
         </div>
-        <div class="all">
-            <label for="all label" class="all label"><b>All</b> of these keywords</label><br>
+
+        <div class="all module">
+            <label for="all"><b>All</b> of these keywords</label><br>
             <input type="text" class="all field" value="" placeholder="word1 word2 word3"><br>
         </div>
-        <br>
-        <div class="apart">
-            <label for="apart label" class="apart label">
-            <input type="text" class="apart field" value="" placeholder="pop"><br>
-            <label for="apart label" class="apart label">and</label>
-            <input type="text" class="apart field" value="" placeholder="culture"><br>
-            <label for="">less than</label>
-            <input type="text" class="apart field" value="" placeholder="4"><br>
-            <label for="">words apart</label>
+
+        <div class="apart module">
+            <p>
+                <input type="text" class="apart field" id="keyword1" value="" placeholder="pop">
+                and 
+                <input type="text" class="apart field" id="keyword2" value="" placeholder="culture"><br>
+                less than
+                <input type="text" class="apart field" id="numWordsApart" value="" placeholder="4">
+                words apart
+
+            </p>
         </div>
     </div>
 
+
+    <br>
+    <br>
+    <br>
 
     Name: <input type="text" id="myText" value="say cheese">
 
