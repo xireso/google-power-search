@@ -2,7 +2,17 @@ var searchStringElements = new Array(14);
 
 function updateExact() {
 	var exact =  '"' + document.getElementsByClassName('exact')[1].value + '"';
-	searchStringElements[0] = exact;
+	if (exact != '""') {
+		searchStringElements[0] = exact;
+	} else {
+		searchStringElements[0] = undefined;
+	}
+	updateSearchString(createString());
+}
+
+function updateAny() {
+	var input =  document.getElementsByClassName('any')[1].value;
+	searchStringElements[1] = input;
 	updateSearchString(createString());
 }
 
@@ -14,7 +24,7 @@ function createString() {
 	var searchString = ""
 	for (i = 0; i < searchStringElements.length; i++) {
 		if (searchStringElements[i] != undefined) {
-			searchString = searchString + searchStringElements[i];
+			searchString = searchString + " " +searchStringElements[i];
 		}
 	}
 	return searchString;

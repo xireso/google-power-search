@@ -35,7 +35,12 @@
 
         <div class="any module">
             <label for="any"><b>Any</b> of these keywords</label><br>
-            <input type="text" class="any field" value="" placeholder="star trek, seinfeld"><br>
+            <input type="text" class="any field"
+                value=""
+                placeholder="star trek, seinfeld"
+                onkeyup="updateAny()"
+            >
+            <br>
         </div>
 
         <div class="all module">
