@@ -4,9 +4,9 @@ var searchStringElements = new Array(13);
 var selectedFiles = [];
 //CONSTANTS
 //Find pages with
-const exactIndex = 0;
+const exactIndex = 2;
 const anyIndex = 1;
-const allIndex = 2;
+const allIndex = 0;
 const aroundIndex = 3;
 //Pages with appearancees of
 const titleIndex = 4;
@@ -26,7 +26,7 @@ const anyOp = 'OR';
 const allOp = 'AND';
 
 //delimiter to separate keywords
-const delimiter = ',';
+const delimiter = ' ';
 //file type length
 const fileNameLength = 3;
 
@@ -63,7 +63,9 @@ function updateAny() {
 function updateAll() {
 	let input = document.getElementsByClassName('all')[1].value;
 	let delimit = input.split(delimiter);
-	searchStringElements[allIndex] = getLogicOp(allOp, delimit);
+	let str = getLogicOp('', delimit);
+	if (str[0] == "(") str = str.substring(2,str.length-2);
+	searchStringElements[allIndex] = str;
 	updateSearchString();
 }
 
