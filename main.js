@@ -111,14 +111,14 @@ console.log(document.getElementsByClassName('exact'));
 // 	any.classList.add('button');
 // }
 
-function anyAllToggle(idName, any) {
+function anyAllToggle(idName, isAny) {
 	let anyString = idName + '-any';
 	let allString = idName + '-all';
 	let anyElement = document.getElementById(anyString);
 	let allElement = document.getElementById(allString);
 
 	// if clicked on any, toggle to any
-	if (any) {
+	if (isAny) {
 		anyElement.classList.remove('button');
 		anyElement.classList.add('button-highlight');
 
@@ -197,6 +197,18 @@ function anyAllToggle(idName, any) {
 // 	any.classList.add('button');
 // }
 
+
+function fileTypeToggle(idName) {
+	var filetype = document.getElementById(idName);
+	if (filetype.classList.contains('button-highlight')) {
+		filetype.classList.remove('button-highlight');
+		filetype.classList.add('button');
+	} else {
+		filetype.classList.remove('button');
+		filetype.classList.add('button-highlight');
+	}
+}
+/**
 // file type selector
 function pdfSpecificSelector() {
 	var filetype = document.getElementById('pdf-file-narrow');
@@ -372,3 +384,4 @@ function xlsExcludeSelector() {
 		filetype.classList.add('button-highlight');
 	}
 }
+**/
