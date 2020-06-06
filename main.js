@@ -90,27 +90,6 @@ function searchGoogle() {
 
 console.log(document.getElementsByClassName('exact'));
 
-// Select Any / All for text in Title
-// function intitleAnySelector() {
-// 	var any = document.getElementById('intitle-any');
-// 	any.classList.remove('button');
-// 	any.classList.add('button-highlight');
-
-// 	var all = document.getElementById('intitle-all');
-// 	all.classList.remove('button-highlight');
-// 	all.classList.add('button');
-// }
-
-// function intitleAllSelector() {
-// 	var all = document.getElementById('intitle-all');
-// 	all.classList.remove('button');
-// 	all.classList.add('button-highlight');
-
-// 	var any = document.getElementById('intitle-any');
-// 	any.classList.remove('button-highlight');
-// 	any.classList.add('button');
-// }
-
 function anyAllToggle(idName, isAny) {
 	let anyString = idName + '-any';
 	let allString = idName + '-all';
@@ -132,6 +111,38 @@ function anyAllToggle(idName, isAny) {
 		anyElement.classList.add('button');
 	}
 }
+
+function fileTypeToggle(idName) {
+	var filetype = document.getElementById(idName);
+	if (filetype.classList.contains('button-highlight')) {
+		filetype.classList.remove('button-highlight');
+		filetype.classList.add('button');
+	} else {
+		filetype.classList.remove('button');
+		filetype.classList.add('button-highlight');
+	}
+}
+
+// Select Any / All for text in Title
+// function intitleAnySelector() {
+// 	var any = document.getElementById('intitle-any');
+// 	any.classList.remove('button');
+// 	any.classList.add('button-highlight');
+
+// 	var all = document.getElementById('intitle-all');
+// 	all.classList.remove('button-highlight');
+// 	all.classList.add('button');
+// }
+
+// function intitleAllSelector() {
+// 	var all = document.getElementById('intitle-all');
+// 	all.classList.remove('button');
+// 	all.classList.add('button-highlight');
+
+// 	var any = document.getElementById('intitle-any');
+// 	any.classList.remove('button-highlight');
+// 	any.classList.add('button');
+// }
 
 // // Select Any / All for text in URL
 // function inurlAnySelector() {
@@ -197,17 +208,6 @@ function anyAllToggle(idName, isAny) {
 // 	any.classList.add('button');
 // }
 
-
-function fileTypeToggle(idName) {
-	var filetype = document.getElementById(idName);
-	if (filetype.classList.contains('button-highlight')) {
-		filetype.classList.remove('button-highlight');
-		filetype.classList.add('button');
-	} else {
-		filetype.classList.remove('button');
-		filetype.classList.add('button-highlight');
-	}
-}
 /**
 // file type selector
 function pdfSpecificSelector() {

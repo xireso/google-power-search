@@ -76,6 +76,20 @@ html {
 	font-weight: normal;
 }
 
+#filetype-field {
+	display: inline-block;
+	border: none;
+	border-radius: 7px;
+	padding: 3px 8px;
+	margin: 5px 2px;
+	width: 53px;
+	text-align: center;
+}
+
+#filetype-field::placeholder {
+	font-size: 0.6rem;
+}
+
 button {
 	border: none;
 	border-radius: 7px;
@@ -101,7 +115,7 @@ button {
 
 	grid-template-areas: "search search narrow" "find specific narrow" "find specific exclude";
 	grid-template-columns: 32% 35% 33%;
-	grid-template-rows: 30% 10% auto;
+	grid-template-rows: 35% 10% auto;
 
 	padding: 2%;
 }
@@ -220,6 +234,15 @@ button {
 	background-color: var(--yellow-dark);
 }
 
+.narrow-results #filetype-field {
+	background-color: var(--yellow-light);
+	color: var(--yellow-dark);
+}
+
+.narrow-results #filetype-field::placeholder {
+	color: var(--yellow-dim);
+}
+
 /* exclude results section */
 .exclude-results {
 	grid-area: exclude;
@@ -256,19 +279,11 @@ button {
 }
 
 .exclude-results #filetype-field {
-	display: inline-block;
 	background-color: var(--green-light);
 	color: var(--green-dark);
-	border: none;
-	border-radius: 7px;
-	padding: 3px 8px;
-	margin: 5px 2px;
-	width: 53px;
-	text-align: center;
 }
 
 .exclude-results #filetype-field::placeholder {
-	font-size: 0.6rem;
 	color: var(--green-dim);
 }
 
