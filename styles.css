@@ -51,7 +51,6 @@ html {
 
 .vertical {
 	border-left: 2px solid black;
-	height: 255px;
 	float: left;
 }
 
@@ -85,6 +84,7 @@ html {
 
 .find-pages .vertical {
 	box-shadow: -1px 0px 4px var(--blue-dim);
+	height: 255px;
 }
 
 .find-pages .field {
@@ -119,6 +119,11 @@ html {
 	color: var(--red);
 }
 
+.specific-pages .vertical {
+	box-shadow: -1px 0px 4px var(--red-dim);
+	height: 270px;
+}
+
 .specific-pages .field {
 	background-color: var(--red-light);
 	color: var(--red-dark);
@@ -126,6 +131,48 @@ html {
 
 .specific-pages .field::placeholder {
 	color: var(--red-dim);
+}
+
+/* narrow down results section */
+
+#narrow-header {
+	color: var(--yellow);
+}
+
+.narrow-results .vertical {
+	box-shadow: -1px 0px 4px var(--yellow-dim);
+	height: 135px;
+}
+
+.narrow-results .field {
+	background-color: var(--yellow-light);
+	color: var(--yellow-dark);
+	width: 85%;
+}
+
+.narrow-results .field::placeholder {
+	color: var(--yellow-dim);
+}
+
+/* exclude results section */
+
+#exclude-header {
+	color: var(--green);
+}
+
+.exclude-results .vertical {
+	box-shadow: -1px 0px 4px var(--green-dim);
+	height: 208px;
+}
+
+.exclude-results .field {
+	background-color: var(--green-light);
+	color: var(--green-dark);
+	width: 85%;
+}
+
+.exclude-results .field::placeholder {
+	color: var(--green-dim);
 }
 
 /* google search bar section */
