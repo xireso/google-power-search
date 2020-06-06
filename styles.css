@@ -323,6 +323,8 @@ button {
 
 	margin-top: 2%;
 	margin-right: 4%;
+
+	height: 65px;
 }
 
 #searchString {
@@ -336,7 +338,7 @@ button {
 	background-color: transparent;
 	border: none;
 
-	background: -webkit-linear-gradient(
+	background-image: -webkit-linear-gradient(
 		5deg,
 		rgba(66, 133, 244, 1) 0%,
 		rgba(15, 157, 88, 1) 41.15%,
@@ -348,12 +350,13 @@ button {
 }
 
 .search-button {
+	display: inline-block;
+
 	width: 65px;
 	height: 65px;
 
 	/* places button on the right of search bar */
 	position: Absolute;
-	display: inline-block;
 	right: 0px;
 
 	margin: 0;

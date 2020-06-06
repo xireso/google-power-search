@@ -24,7 +24,7 @@
         <!-- Module for "Find pages with:" -->
         <div class="find-pages big-section">
 
-            <h1 id="find-pages-header">Find pages with</h1>
+            <h1 id="find-pages-header">Find pages with:</h1>
 
             <div class="find-pages vertical"></div>
 
@@ -73,7 +73,7 @@
         <!-- Module for "Pages with appearances of:" -->
         <div class="specific-pages big-section">
 
-            <h1 id="specific-header">Pages with appearances of</h1>
+            <h1 id="specific-header">Pages with appearances of:</h1>
 
             <div class="specific-pages vertical"></div>
 
@@ -169,7 +169,8 @@
             <h1 class="search-header">Generated Google Search String</h1>
 
             <div class="search-bar"> 
-                <input readonly type=text id="searchString" rows='1' cols='40' value=' '>
+                <input readonly type=text id="searchString" class="fit" value=' '>
+                
                 <button class="search-button" onclick="searchGoogle()">
                     <img class="search-background"src="/googleSearchBkgrnd.png">
     
@@ -179,12 +180,16 @@
 
                 </button>
             </div>
+
         </div>
+
+
 
     </div>
 
     <!-- link to our javascript file -->
     <script src="main.js"></script>
+
 </body>
 
 </html>

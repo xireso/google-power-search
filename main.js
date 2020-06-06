@@ -136,6 +136,43 @@ function updateDomain(excludeOrNarrow) {
 }
 
 /**
+ * called when all module modified
+ * creates string of keywords separated by AND
+ */
+function updateExcludeKeywords() {
+	let prefix = '-';
+	let input = document.getElementsByClassName('exclude-keywords')[1].value;
+	let wordList = [];
+
+	if (input) {
+		let keywords = input.split(delimiter);
+
+		for (const keyword of keywords) {
+			wordList.push(prefix + keyword);
+		}
+
+		searchStringElements[excludeKeywordsIndex] = joinWithSpaces(wordList);
+	} else {
+		//else here to make sure - not left if content in field is deleted
+		searchStringElements[excludeKeywordsIndex] = undefined;
+	}
+
+	updateSearchString();
+}
+
+/**
+ * takes an array of strings
+ * and joins them together with spaces in between
+ */
+function joinWithSpaces(array) {
+	let out = '';
+	for (const word of array) {
+		out += word + ' ';
+	}
+	return out;
+}
+
+/**
  * Creates a string with AND or OR between keywords
  * @param {String} operator AND or OR
  * @param {Array} keywordArray words to put operator between
@@ -175,6 +212,8 @@ function updateSearchString() {
 		if (searchElement != undefined) searchString += searchElement + ' ';
 	}
 	document.getElementById('searchString').value = searchString;
+
+	scaleFontSize('searchString');
 }
 
 /**
@@ -209,7 +248,6 @@ function anyAllToggle(idName, isAny) {
 
 function fileTypeToggle(idName) {
 	let selectedNarrow = idName.substr(9) == 'narrow' ? true : false;
-	console.log(idName.substr(9));
 
 	let filetype = document.getElementById(idName);
 	if (filetype.classList.contains('button-highlight')) {
@@ -237,4 +275,21 @@ function updateNarrowFiles() {
 function updateExcludedFiles() {
 	searchStringElements[excludeFileTypeIndex] = getLogicOp(allOp, excludeFiles);
 	updateSearchString();
+}
+
+function scaleFontSize(element) {
+	var container = document.getElementById(element);
+
+	// Reset font-size to 100% to begin
+	container.style.fontSize = '120%';
+
+	console.log(container.scrollWidth);
+
+	console.log(container.clientWidth);
+
+	// Check if the text is wider than its container,
+	// if so then reduce font-size
+	if (container.scrollHeight > container.clientHeight || container.scrollWidth > container.clientWidth) {
+		container.style.fontSize = '80%';
+	}
 }
