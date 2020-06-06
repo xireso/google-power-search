@@ -5,6 +5,12 @@ var searchStringElements = new Array(13);
 var narrowFiles = [];
 var excludeFiles = [];
 
+//record which button selected
+var titleIsAny = true;
+var urlIsAny = true;
+var textIsAny = true;
+var linksIsAny = true;
+
 //CONSTANTS
 //Find pages with
 const exactIndex = 2;
@@ -29,13 +35,18 @@ const excludeFileTypeIndex = 12;
 
 //Logic operators
 const anyOp = '|';
-const allOp = 'AND';
+const allOp = '&';
 
 //delimiter to separate keywords
 const delimiter = ' ';
 
 //file type length
 const fileNameLength = 3;
+
+//prefixs
+const filePrefix = 'filetype:';
+const sitePrefix = 'site:';
+const appearancePrefix = 'all';
 
 /**
  * called when all module modified
@@ -53,7 +64,7 @@ function updateAll() {
 function updateAny() {
 	let input = document.getElementsByClassName('any')[1].value;
 	let delimit = input.split(delimiter);
-	searchStringElements[anyIndex] = getLogicOp(anyOp, delimit);
+	searchStringElements[anyIndex] = getLogicOp(anyOp, delimit, '');
 	updateSearchString();
 }
 
@@ -103,14 +114,14 @@ function updateApart() {
  */
 function updateDomain(excludeOrNarrow) {
 	// default: if add domain (in narrow section), site: and join with OR
-	let sitePrefix = 'site:';
+	let prefix = sitePrefix;
 	let operator = anyOp;
 	let elementIndex = 1;
 	let indexType = byDomainIndex;
 
 	// if user wants to exclude domains, add - in front and join with AND
 	if (excludeOrNarrow === 'exclude') {
-		sitePrefix = '-' + sitePrefix;
+		prefix = '-' + sitePrefix;
 		operator = allOp;
 		elementIndex = 3;
 		indexType = excludeDomainIndex;
@@ -120,13 +131,7 @@ function updateDomain(excludeOrNarrow) {
 
 	if (domains) {
 		let delimit = domains.split(delimiter);
-		let domainList = [];
-
-		for (const domain of delimit) {
-			domainList.push(sitePrefix + domain);
-		}
-
-		searchStringElements[indexType] = getLogicOp(operator, domainList);
+		searchStringElements[indexType] = getLogicOp(operator, delimit, prefix);
 	} else {
 		//else here to make sure site: not left if content in field is deleted
 		searchStringElements[indexType] = undefined;
@@ -177,14 +182,14 @@ function joinWithSpaces(array) {
  * @param {String} operator AND or OR
  * @param {Array} keywordArray words to put operator between
  */
-function getLogicOp(operator, keywordArray) {
+function getLogicOp(operator, keywordArray, prefix) {
 	let out = '';
 	if (keywordArray.length == 0) {
 		return out;
 	}
 	//if there is only one word, done
 	if (keywordArray.length == 1) {
-		return keywordArray[0];
+		return prefix + keywordArray[0];
 	}
 
 	//creates logic line
@@ -192,14 +197,14 @@ function getLogicOp(operator, keywordArray) {
 	for (i = 0; i < keywordArray.length - 1; i++) {
 		keywordArray[i + 1] = keywordArray[i + 1].trim();
 		//if-else to make sure that there is no operator w/out another keyword on right
-		if (keywordArray[i + 1] != '') out += ' ' + keywordArray[i] + ' ' + operator;
-		else out += ' ' + keywordArray[i];
+		if (keywordArray[i + 1] != '') out += ' ' + prefix + keywordArray[i] + ' ' + operator;
+		else out += ' ' + prefix + keywordArray[i];
 	}
 
 	//fixes bug that adds space when comma with no letters after it typed
 	if ('' == keywordArray[keywordArray.length - 1].trim()) return out + ' )';
 	//closes parentheses
-	out += ' ' + keywordArray[keywordArray.length - 1] + ' )';
+	out += ' ' + prefix + keywordArray[keywordArray.length - 1] + ' )';
 	return out;
 }
 
@@ -229,6 +234,7 @@ function anyAllToggle(idName, isAny) {
 	let allString = idName + '-all';
 	let anyElement = document.getElementById(anyString);
 	let allElement = document.getElementById(allString);
+	let buttonSelection;
 
 	// if clicked on any, toggle to any
 	if (isAny) {
@@ -237,14 +243,77 @@ function anyAllToggle(idName, isAny) {
 
 		allElement.classList.remove('button-highlight');
 		allElement.classList.add('button');
+		buttonSelection = true;
 	} else {
 		allElement.classList.remove('button');
 		allElement.classList.add('button-highlight');
 
 		anyElement.classList.remove('button-highlight');
 		anyElement.classList.add('button');
+		buttonSelection = false;
 	}
+	
+	// record which button was changed
+	switch (idName) {
+		case "intitle":
+			console.log('intitle switch');
+			titleIsAny = buttonSelection;
+			break;
+		case "inurl":
+			console.log('inurl switch');
+			urlIsAny = buttonSelection;
+			break;
+		case "intext":
+			console.log('intext switch');
+			textIsAny = buttonSelection;
+			break;
+		case "inlinks":
+			console.log('inlinkes switch');
+			linksIsAny = buttonSelection;
+			break;
+	}
+
+	updateAppearances(idName)
 }
+
+function updateAppearances(idName) {
+	let input = document.getElementById(idName + "Input").value;
+	let delimit = input.split(delimiter);
+	
+	let prefix = appearancePrefix + idName + ':'; 
+	let isAnySelected;
+	let changedIndex;
+	
+	// create string for modified element
+	switch (idName) {
+		case "intitle":
+			changedIndex = titleIndex;
+			isAnySelected = titleIsAny;
+			break;
+		case "inurl":
+			changedIndex = urlIndex;
+			isAnySelected = urlIsAny;
+			break;
+		case "intext":
+			changedIndex = textIndex;
+			isAnySelected = textIsAny;
+			break;
+		case "inlinks":
+			changedIndex = linksIndex;
+			isAnySelected = linksIsAny;
+			break;
+	}
+
+	if (isAnySelected) {
+		if (input) searchStringElements[changedIndex] = getLogicOp(anyOp, delimit, prefix);
+		else searchStringElements[changedIndex] = undefined;
+	} else {
+		if (input) searchStringElements[changedIndex] = getLogicOp(allOp, delimit, prefix);
+		else searchStringElements[changedIndex] = undefined;
+	}
+	updateSearchString();
+}
+
 
 function fileTypeToggle(idName) {
 	let selectedNarrow = idName.substr(9) == 'narrow' ? true : false;
@@ -253,27 +322,34 @@ function fileTypeToggle(idName) {
 	if (filetype.classList.contains('button-highlight')) {
 		filetype.classList.remove('button-highlight');
 		filetype.classList.add('button');
-		if (selectedNarrow)
-			narrowFiles.splice(narrowFiles.indexOf('filetype:' + idName.substring(0, fileNameLength)), 1);
-		else excludeFiles.splice(excludeFiles.indexOf('-filetype:' + idName.substring(0, fileNameLength)), 1);
+		if (selectedNarrow) {
+			narrowFiles.splice(narrowFiles.indexOf(idName.substring(0, fileNameLength)), 1);
+			updateNarrowFiles();
+		} else {
+			excludeFiles.splice(excludeFiles.indexOf(idName.substring(0, fileNameLength)), 1);
+			updateExcludedFiles();
+		}
 	} else {
 		filetype.classList.remove('button');
 		filetype.classList.add('button-highlight');
 
-		if (selectedNarrow) narrowFiles.push('filetype:' + idName.substring(0, fileNameLength));
-		else excludeFiles.push('-filetype:' + idName.substring(0, fileNameLength));
+		if (selectedNarrow) {
+			narrowFiles.push(idName.substring(0, fileNameLength));
+			updateNarrowFiles();
+		} else {
+			excludeFiles.push(idName.substring(0, fileNameLength));
+			updateExcludedFiles();
+		}
 	}
-	updateNarrowFiles();
-	updateExcludedFiles();
 }
 
 function updateNarrowFiles() {
-	searchStringElements[fileTypeIndex] = getLogicOp(anyOp, narrowFiles);
+	searchStringElements[fileTypeIndex] = getLogicOp(anyOp, narrowFiles, filePrefix);
 	updateSearchString();
 }
 
 function updateExcludedFiles() {
-	searchStringElements[excludeFileTypeIndex] = getLogicOp(allOp, excludeFiles);
+	searchStringElements[excludeFileTypeIndex] = getLogicOp(allOp, excludeFiles, '-' + filePrefix);
 	updateSearchString();
 }
 
