@@ -18,7 +18,7 @@
 
 <body>
 
-
+<!-- Module for "Find pages with: -->
     <div class="find-pages big-section">
 
         <h1 id="find-pages-header">Find pages with</h1>
@@ -30,12 +30,12 @@
 
         <div class="any module">
             <label for="any"><b>Any</b> of these keywords</label><br>
-            <input type="text" class="any field" value="" placeholder="word1 word2 word3"><br>
+            <input type="text" class="any field" value="" placeholder="star trek, seinfeld"><br>
         </div>
 
         <div class="all module">
             <label for="all"><b>All</b> of these keywords</label><br>
-            <input type="text" class="all field" value="" placeholder="word1 word2 word3"><br>
+            <input type="text" class="all field" value="" placeholder="star trek, seinfeld"><br>
         </div>
 
         <div class="apart module">
@@ -49,6 +49,41 @@
 
             </p>
         </div>
+    </div>
+
+<!-- Module for "Pages with appearances of: -->
+    <div class="specific-pages big-section">
+
+        <h1 id="specific-header">Pages with appearances of</h1><br>
+
+        <div class="intitle module">
+            <button type="button" class="intitle button" id="intitle-any" onclick=jsFunctionGoesHere()>Any</button>
+            <button type="button" class="intitle button" id="intitle-all" onclick=jsFunctionGoesHere()>All</button>
+            <label for="intitle">of these terms in the <b>title</b></label><br>
+            <input type="text" class="intitle field" value="" placeholder="word1, word2, phrase3"><br><br>
+        </div>
+
+        <div class="inurl module">
+            <button type="button" class="url button" id="inurl-any" onclick=jsFunctionGoesHere()>Any</button>
+            <button type="button" class="url button" id="inurl-all" onclick=jsFunctionGoesHere()>All</button>
+            <label for="inurl">of these terms in the <b>URL</b></label><br>
+            <input type="text" class="inurl field" value="" placeholder="word1, word2, phrase3"><br><br>
+        </div>
+        
+        <div class="intext module">
+            <button type="button" class="intext button" id="intext-any" onclick=jsFunctionGoesHere()>Any</button>
+            <button type="button" class="intext button" id="intext-all" onclick=jsFunctionGoesHere()>All</button>
+            <label for="intext">of these terms in the <b>text</b></label><br>
+            <input type="text" class="intext field" value="" placeholder="word1, word2, phrase3"><br><br>
+        </div>
+
+        <div class="inlinks module">
+            <button type="button" class="inlinks button" id="inlinks-any" onclick=jsFunctionGoesHere()>Any</button>
+            <button type="button" class="inlinks button" id="inlinks-all" onclick=jsFunctionGoesHere()>All</button>
+            <label for="inlinks">of these terms in <b>links</b> on the page</label><br>
+            <input type="text" class="inlinks field" value="" placeholder="word1, word2, phrase3"><br><br>
+        </div>
+
     </div>
 
 
