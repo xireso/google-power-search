@@ -40,7 +40,7 @@ function updateAny() {
 }
 
 function updateAll() {
-	searchStringElements[anyIndex] = getLogicOp('all',"AND",1);
+	searchStringElements[allIndex] = getLogicOp('all',"AND",1);
 	updateSearchString(createString());
 }
 
@@ -111,12 +111,6 @@ function intitleAllSelector() {
 	any.classList.add('button');
 }
 
-/**var input = '';
-	input = input + document.getElementsByClassName('exact')[1].value;
-	exact = '"' + input + '"';
-	document.getElementById('searchString').innerHTML = exact;
-**/
-
 // Select Any / All for text in URL
 function inurlAnySelector() {
 	var any = document.getElementById('inurl-any');
@@ -181,6 +175,18 @@ function inlinksAllSelector() {
 	any.classList.add('button');
 }
 
+
+function fileTypeToggle(idName) {
+	var filetype = document.getElementById(idName);
+	if (filetype.classList.contains('button-highlight')) {
+		filetype.classList.remove('button-highlight');
+		filetype.classList.add('button');
+	} else {
+		filetype.classList.remove('button');
+		filetype.classList.add('button-highlight');
+	}
+}
+/**
 // file type selector
 function pdfSpecificSelector() {
 	var filetype = document.getElementById('pdf-file-narrow');
@@ -356,3 +362,4 @@ function xlsExcludeSelector() {
 		filetype.classList.add('button-highlight');
 	}
 }
+**/

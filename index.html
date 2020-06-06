@@ -49,7 +49,11 @@
 
             <div class="all module">
                 <label for="all"><b>All</b> of these keywords</label><br>
-                <input type="text" class="all field" value="" placeholder="star trek, seinfeld">
+                <input type="text" class="all field"
+                    value=""
+                    placeholder="star trek, seinfeld"
+                    onkeyup="updateAll()"
+                >
             </div>
 
             <div class="apart module">
@@ -111,14 +115,14 @@
 
             <div class="filetype module">
                 <label for="filetype">By <b>file type</b></label><br>
-                <button type="button" class="filetype button" id="pdf-file-narrow" onclick="pdfSpecificSelector()">.pdf</button>
-                <button type="button" class="filetype button" id="txt-file-narrow" onclick="txtSpecificSelector()">.txt</button>
-                <button type="button" class="filetype button" id="rtf-file-narrow" onclick="rtfSpecificSelector()">.rtf</button>
-                <button type="button" class="filetype button" id="svg-file-narrow" onclick="svgSpecificSelector()">.svg</button>
-                <button type="button" class="filetype button" id="doc-file-narrow" onclick="docSpecificSelector()">.doc</button><br>
-                <button type="button" class="filetype button" id="tex-file-narrow" onclick="texSpecificSelector()">.tex</button>
-                <button type="button" class="filetype button" id="xls-file-narrow" onclick="xlsSpecificSelector()">.xls</button>
-                <button type="button" class="filetype button" id="ppt-file-narrow" onclick="pptSpecificSelector()">.ppt</button>
+                <button type="button" class="filetype button" id="pdf-file-narrow" onclick="fileTypeToggle('pdf-file-narrow')">.pdf</button>
+                <button type="button" class="filetype button" id="txt-file-narrow" onclick="fileTypeToggle('txt-file-narrow')">.txt</button>
+                <button type="button" class="filetype button" id="rtf-file-narrow" onclick="fileTypeToggle('rtf-file-narrow')">.rtf</button>
+                <button type="button" class="filetype button" id="svg-file-narrow" onclick="fileTypeToggle('svg-file-narrow')">.svg</button>
+                <button type="button" class="filetype button" id="doc-file-narrow" onclick="fileTypeToggle('doc-file-narrow')">.doc</button><br>
+                <button type="button" class="filetype button" id="tex-file-narrow" onclick="fileTypeToggle('tex-file-narrow')">.tex</button>
+                <button type="button" class="filetype button" id="xls-file-narrow" onclick="fileTypeToggle('xls-file-narrow')">.xls</button>
+                <button type="button" class="filetype button" id="ppt-file-narrow" onclick="fileTypeToggle('ppt-file-narrow')">.ppt</button>
                 <input type="text" id="filetype-field" value="" placeholder="enter file type">
             </div>
 
@@ -148,14 +152,14 @@
 
             <div class="filetype module">
                 <label for="filetype">By <b>file type</b></label><br>
-                <button type="button" class="filetype button" id="pdf-file-exclude" onclick="pdfExcludeSelector()">.pdf</button>
-                <button type="button" class="filetype button" id="txt-file-exclude" onclick="txtExcludeSelector()">.txt</button>
-                <button type="button" class="filetype button" id="rtf-file-exclude" onclick="rtfExcludeSelector()">.rtf</button>
-                <button type="button" class="filetype button" id="svg-file-exclude" onclick="svgExcludeSelector()">.svg</button>
-                <button type="button" class="filetype button" id="doc-file-exclude" onclick="docExcludeSelector()">.doc</button><br>
-                <button type="button" class="filetype button" id="tex-file-exclude" onclick="texExcludeSelector()">.tex</button>
-                <button type="button" class="filetype button" id="xls-file-exclude" onclick="xlsExcludeSelector()">.xls</button>
-                <button type="button" class="filetype button" id="ppt-file-exclude" onclick="pptExcludeSelector()">.ppt</button>
+                <button type="button" class="filetype button" id="pdf-file-exclude" onclick="fileTypeToggle('pdf-file-exclude')">.pdf</button>
+                <button type="button" class="filetype button" id="txt-file-exclude" onclick="fileTypeToggle('txt-file-exclude')">.txt</button>
+                <button type="button" class="filetype button" id="rtf-file-exclude" onclick="fileTypeToggle('rtf-file-exclude')">.rtf</button>
+                <button type="button" class="filetype button" id="svg-file-exclude" onclick="fileTypeToggle('svg-file-exclude')">.svg</button>
+                <button type="button" class="filetype button" id="doc-file-exclude" onclick="fileTypeToggle('doc-file-exclude')">.doc</button><br>
+                <button type="button" class="filetype button" id="tex-file-exclude" onclick="fileTypeToggle('tex-file-exclude')">.tex</button>
+                <button type="button" class="filetype button" id="xls-file-exclude" onclick="fileTypeToggle('xls-file-exclude')">.xls</button>
+                <button type="button" class="filetype button" id="ppt-file-exclude" onclick="fileTypeToggle('ppt-file-exclude')">.ppt</button>
                 <input type="text" id="filetype-field" value="" placeholder="enter file type">
             </div>
         </div>
