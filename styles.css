@@ -30,22 +30,34 @@ body {
 .big-section {
 	display: inline-block;
 	background-color: white;
-	padding: 10px;
-	border-radius: 15px;
-
-	background: rgba(255, 255, 255, 1);
 	mix-blend-mode: normal;
 	box-shadow: 0px 0px 5px #ffffff;
+
+	border-radius: 15px;
+	padding-left: 20px;
+
+	margin: 15px;
 }
 
 h1 {
 	font-family: "Playfair Display";
 	font-size: 1.4rem;
+	margin-bottom: 0.5rem;
+}
+
+html {
+	height: 100%;
+}
+
+.vertical {
+	border-left: 2px solid black;
+	height: 255px;
+	float: left;
 }
 
 .module {
-	margin: 20px;
-	margin-left: 0;
+	/* top right bottom left */
+	margin: 0 25px 18px 14px;
 }
 
 .field {
@@ -71,9 +83,14 @@ h1 {
 	color: var(--blue);
 }
 
+.find-pages .vertical {
+	box-shadow: -1px 0px 4px var(--blue-dim);
+}
+
 .find-pages .field {
 	background-color: var(--blue-light);
 	color: var(--blue-dark);
+	width: 85%;
 }
 
 .find-pages .field::placeholder {
@@ -81,11 +98,34 @@ h1 {
 }
 
 .apart .field {
-	width: 60px;
+	width: 70px;
+	margin: 2px 0;
+	text-align: center;
+	margin-right: 3px;
+}
+
+.apart #keyword2 {
+	margin-left: 3px;
 }
 
 .apart #numWordsApart {
-	width: 15px;
+	width: 16px;
+	margin-left: 2px;
+}
+
+/* specific section (red) */
+
+#specific-header {
+	color: var(--red);
+}
+
+.specific-pages .field {
+	background-color: var(--red-light);
+	color: var(--red-dark);
+}
+
+.specific-pages .field::placeholder {
+	color: var(--red-dim);
 }
 
 /* google search bar section */
