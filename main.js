@@ -32,3 +32,25 @@ function intextAllSelector() {}
 function inlinksAnySelector() {}
 
 function inlinksAllSelector() {}
+
+
+// file type selector
+function pdfSpecificSelector() {}
+function txtSpecificSelector() {}
+function rtfSpecificSelector() {}
+function svgSpecificSelector() {}
+function texSpecificSelector() {}
+function docSpecificSelector() {}
+function pptSpecificSelector() {}
+function xlsSpecificSelector() {}
+
+
+// file type exclusions
+function pdfExcludeSelector() {}
+function txtExcludeSelector() {}
+function rtfExcludeSelector() {}
+function svgExcludeSelector() {}
+function texExcludeSelector() {}
+function docExcludeSelector() {}
+function pptExcludeSelector() {}
+function xlsExcludeSelector() {}
