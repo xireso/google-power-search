@@ -1,4 +1,8 @@
+//record for search bar
 var searchStringElements = new Array(13);
+// record of selected files for narrowing search
+var selectedFiles = [];
+//CONSTANTS
 //Find pages with
 const exactIndex = 0;
 const anyIndex = 1;
@@ -23,72 +27,92 @@ const allOp = 'AND';
 
 //delimiter to separate keywords
 const delimiter = ',';
+//file type length
+const fileNameLength = 3;
 
+
+/**
+ * called when exact module modified.
+ * creates string with quotes on either side
+ */
 function updateExact() {
 	var exact = '"' + document.getElementsByClassName('exact')[1].value + '"';
 	if (exact != '""') {
 		searchStringElements[exactIndex] = exact;
-	} else {
+	} else { //else here to make sure "" not left if exact phrase is deleted
 		searchStringElements[exactIndex] = undefined;
 	}
-	updateSearchString(createString());
+	updateSearchString();
 }
 
+/**
+ * called when any module modified.
+ * creates string of keywords separated by OR
+ */
 function updateAny() {
-	searchStringElements[anyIndex] = getLogicOp('any', 'OR', 1);
-	updateSearchString(createString());
-}
-
-function updateAll() {
-	searchStringElements[allIndex] = getLogicOp('all', 'AND', 1);
-	updateSearchString(createString());
-}
-
-function getLogicOp(logicFunc, operator, inputIndex) {
-	let input = document.getElementsByClassName(logicFunc)[inputIndex].value;
+	let input = document.getElementsByClassName('any')[1].value;
 	let delimit = input.split(delimiter);
+	searchStringElements[anyIndex] = getLogicOp(anyOp, delimit);
+	updateSearchString();
+}
 
+/**
+ * called when all module modified
+ * creates string of keywords separated by AND
+ */
+function updateAll() {
+	let input = document.getElementsByClassName('all')[1].value;
+	let delimit = input.split(delimiter);
+	searchStringElements[allIndex] = getLogicOp(allOp, delimit);
+	updateSearchString();
+}
+
+/**
+ * Creates a string with AND or OR between keywords
+ * @param {String} operator AND or OR
+ * @param {Array} keywordArray words to put operator between
+ */
+function getLogicOp(operator, keywordArray) {
 	let out = '';
-	if (delimit.length == 1) {
-		return input;
+	//if there is only one word, done
+	if (keywordArray.length == 1) {
+		return keywordArray[0];
 	}
 
 	//creates logic line
 	out = '(';
-	for (i = 0; i < delimit.length - 1; i++) {
-		delimit[i + 1] = delimit[i + 1].trim();
-		//if else to make sure that there is no operator w/out another keyword on right
-		if (delimit[i + 1] != '') out += ' ' + delimit[i] + ' ' + operator;
-		else out += ' ' + delimit[i];
+	for (i = 0; i < keywordArray.length - 1; i++) {
+		keywordArray[i + 1] = keywordArray[i + 1].trim();
+		//if-else to make sure that there is no operator w/out another keyword on right
+		if (keywordArray[i + 1] != '') out += ' ' + keywordArray[i] + ' ' + operator;
+		else out += ' ' + keywordArray[i];
 	}
 
 	//fixes bug that adds space when comma with no letters after it typed
-	if ('' == delimit[delimit.length - 1].trim()) return out + ' )';
+	if ('' == keywordArray[keywordArray.length - 1].trim()) return out + ' )';
 	//closes parentheses
-	out += ' ' + delimit[delimit.length - 1] + ' )';
+	out += ' ' + keywordArray[keywordArray.length - 1] + ' )';
 	return out;
 }
 
-function updateSearchString(searchString) {
+/**
+ * Updates search bar based on user's input
+ */
+function updateSearchString() {
+	var searchString = '';
+	for (searchElement of searchStringElements) {
+		if (searchElement != undefined) searchString += ' ' + searchElement;
+	}
 	document.getElementById('searchString').value = searchString;
 }
 
-function createString() {
-	var searchString = '';
-	for (i = 0; i < searchStringElements.length; i++) {
-		if (searchStringElements[i] != undefined) {
-			searchString += ' ' + searchStringElements[i];
-		}
-	}
-	return searchString;
-}
-
+/**
+ * Searches finished string on google
+ */
 function searchGoogle() {
 	URL = 'https://google.com/search?q=' + createString();
 	window.open(URL);
 }
-
-console.log(document.getElementsByClassName('exact'));
 
 function anyAllToggle(idName, isAny) {
 	let anyString = idName + '-any';
@@ -117,10 +141,24 @@ function fileTypeToggle(idName) {
 	if (filetype.classList.contains('button-highlight')) {
 		filetype.classList.remove('button-highlight');
 		filetype.classList.add('button');
+		selectedFiles.splice(selectedFiles.indexOf("filetype:" + idName.substring(0,fileNameLength)),1);
 	} else {
 		filetype.classList.remove('button');
 		filetype.classList.add('button-highlight');
+		selectedFiles.push("filetype:" + idName.substring(0,fileNameLength));
 	}
+	updateNarrowFiles();
+}
+
+function updateNarrowFiles() {
+	searchStringElements[fileTypeIndex] = getLogicOp(anyOp,selectedFiles);
+	updateSearchString();
+}
+
+function createString(array) {
+	let out = "";
+	for (str of array) { out += " " + str; }
+	return out;
 }
 
 // Select Any / All for text in Title
