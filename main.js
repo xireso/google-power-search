@@ -331,7 +331,7 @@ function fileTypeToggle(idName) {
  */
 function updateFiles(narrowOrExclude) {
 	//array of file types in custom. preimptivley removes and '.' from string (ex .pdf -> pdf)
-	let delimit = document.getElementById(narrowOrExclude + CUSTOM_FILE_TYPE_SUFFIX).value.replace('.','').split(FILE_AND_DOMAIN_DELIMETER);
+	let delimit = document.getElementById(narrowOrExclude + CUSTOM_FILE_TYPE_SUFFIX).value.replace(/\./g,'').split(FILE_AND_DOMAIN_DELIMETER);
 
 	switch (narrowOrExclude) {
 		case 'narrow':
@@ -529,7 +529,7 @@ function joinWithSpaces(array) {
 /* 
 * called to display/hide an instructional modal on "How to Use" the tool 
 */
-function helpPopUp() {
+window.addEventListener('load', function() {
 	var modal = document.getElementById('helpModal');
 	var btn = document.getElementById('helpBtn');
 	var span = document.getElementById('helpSpan');
@@ -555,12 +555,12 @@ function helpPopUp() {
 			modalB.style.display = 'none';
 		}
 	};
-}
+});
 
 /*
 * called to display/hide a modal of example uses for our tool
 */
-function exPopUp() {
+window.addEventListener('load', function() {
 	var modal = document.getElementById('exModal');
 	var btn = document.getElementById('exBtn');
 	var span = document.getElementById('exSpan');
@@ -586,4 +586,4 @@ function exPopUp() {
 			modalB.style.display = 'none';
 		}
 	};
-}
+});
