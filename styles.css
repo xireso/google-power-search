@@ -30,9 +30,10 @@ body {
 	background-color: #2d2d2d;
 	font-family: var(--body-font);
 
-	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), rgba(49, 49, 49, 0.6)),
+	background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.85), rgba(49, 49, 49, 0.6)),
 		url("https://source.unsplash.com/collection/10626135");
 
+	background-attachment: fixed;
 	background-size: cover;
 }
 
