@@ -11,18 +11,29 @@
     <link rel="stylesheet" href="styles.css">
 
     <!-- google fonts embedding -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&family=Roboto+Slab:wght@500&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500;700&family=Roboto+Slab:wght@500&display=swap"
         rel="stylesheet">
 
 </head>
 
 <body>
-    <h1 class="page-title">Powerful Google Search</h1>
 
-    <button class="clear-button" onclick="clearAll()">Clear All Inputs</button>
+    <div class="header-section">
+        <!-- open the pop-up box-->
+        <div class="modal-section">
+            <button class ="help modal-button" id="helpBtn" onclick="popUp('helpModal','helpBtn')">How to Use</button>
+            <button class ="example modal-button" id="exBtn" onclick="popUp('exModal', 'exBtn')">Fun Examples!</button>
+        </div>
 
-    <!-- open the pop-up box-->
-    <button class ="help-modal-button" id="helpBtn" onclick="popUp('helpModal','helpBtn')">How to Use</button>
+        <div class="social-media-section">
+            <div class="social-media-icon">One</div>
+            <div class="social-media-icon">Two</div>
+            <div class="social-media-icon">Three</div>
+            <div class="social-media-icon">Four</div>
+            <div class="social-media-icon">Five</div>
+        </div>
+    </div>
+
     <div id="helpModal" class="modal">
         <!-- modal content-->
         <div class="modal-content">
@@ -41,7 +52,6 @@
         </div>
     </div>
     
-    <button class ="example-modal-button" id="exBtn" onclick="popUp('exModal', 'exBtn')">Fun Examples!</button>
     <div id="exModal" class="modal">
         <!-- modal content-->
         <div class="modal-content">
@@ -79,8 +89,11 @@
         </div>
     </div>
 
-    <div class="grid">
+    <h1 class="page-title">Google Power Search</h1>
+    <button class="clear-button" onclick="clearAll()">Clear All Inputs</button>
 
+
+    <div class="grid">
         <!-- Module for "Find pages with:" -->
         <div class="find-pages big-section">
 
@@ -225,11 +238,12 @@
             </div>
         </div>
 
+        <!-- search bar -->
         <div class="google-search-bar big-section">
             <h1 class="search-header">Generated Google Search String</h1>
 
             <div class="search-bar"> 
-                <input readonly type=text id="searchString" class="fit" value=' '>
+                <input readonly type=text id="searchString" value=' '>
                 
                 <button class="search-button" onclick="searchGoogle()">
                     <img class="search-background"src="/googleSearchBkgrnd.png">

@@ -216,24 +216,24 @@ function anyAllToggle(idName, isAny) {
 		anyElement.classList.add('button');
 		buttonSelection = false;
 	}
-	
+
 	// record which specfic button was changed
 	switch (idName) {
-		case "intitle":
+		case 'intitle':
 			titleIsAny = buttonSelection;
 			break;
-		case "inurl":
+		case 'inurl':
 			urlIsAny = buttonSelection;
 			break;
-		case "intext":
+		case 'intext':
 			textIsAny = buttonSelection;
 			break;
-		case "inlinks":
+		case 'inlinks':
 			linksIsAny = buttonSelection;
 			break;
 	}
 
-	updateAppearancesSection(idName)
+	updateAppearancesSection(idName);
 }
 
 /**
@@ -243,30 +243,30 @@ function anyAllToggle(idName, isAny) {
  */
 function updateAppearancesSection(idName) {
 	//take input from appropraite section
-	let input = document.getElementById(idName + "Input").value;
+	let input = document.getElementById(idName + 'Input').value;
 	let delimit = input.split(DELIMITER);
-	
-	let prefix = APPEARANCE_PREFIX + idName + ':'; 
+
+	let prefix = APPEARANCE_PREFIX + idName + ':';
 	//is any button selected for specific type (link, url, text, or title)
 	let isAnySelected;
 	//which element is being modified
 	let changedIndex;
-	
+
 	// adjust variables to perform change of appropriate variable
 	switch (idName) {
-		case "intitle":
+		case 'intitle':
 			changedIndex = TITIE_INDEX;
 			isAnySelected = titleIsAny;
 			break;
-		case "inurl":
+		case 'inurl':
 			changedIndex = URL_INDEX;
 			isAnySelected = urlIsAny;
 			break;
-		case "intext":
+		case 'intext':
 			changedIndex = TEXT_INDEX;
 			isAnySelected = textIsAny;
 			break;
-		case "inlinks":
+		case 'inlinks':
 			changedIndex = LINKS_INDEX;
 			isAnySelected = linksIsAny;
 			break;
@@ -306,7 +306,7 @@ function fileTypeToggle(idName) {
 			excludeFiles.splice(excludeFiles.indexOf(idName.substring(0, FILE_NAME_LENGTH)), 1);
 			updateExcludedFiles();
 		}
-	//selcect button
+		//selcect button
 	} else {
 		filetype.classList.remove('button');
 		filetype.classList.add('button-highlight');
@@ -364,29 +364,31 @@ function scaleFontSize(element) {
 	// Check if the text is wider than its container,
 	// if so then reduce font-size
 	if (container.scrollHeight > container.clientHeight || container.scrollWidth > container.clientWidth) {
-		let decreaseRatio = .5;
-		currentFontSize = currentFontSize * .65;
+		let decreaseRatio = 0.5;
+		currentFontSize = currentFontSize * 0.65;
 		container.style.fontSize = toFontSizeFormat(currentFontSize);
-		console.log("MODIFY");
+		console.log('MODIFY');
 	}
-	console.log("before:" + container.style.fontSize);
+	console.log('before:' + container.style.fontSize);
 	//console.log("after:" + toFontSizeFormat(currentFontSize));
 	console.log(container.scrollWidth);
 	console.log(container.clientWidth);
 }
-/*
-function scaleFontSize(element) {
-	var container = document.getElementById(element);
-	// Reset font-size to 100% to begin
-	container.style.fontSize = '120%';
-	console.log(container.scrollWidth);
-	console.log(container.clientWidth);
-	// Check if the text is wider than its container,
-	// if so then reduce font-size
-	if (container.scrollHeight > container.clientHeight || container.scrollWidth > container.clientWidth) {
-		container.style.fontSize = '80%';
-	}
-}*/
+
+// function scaleFontSize(element) {
+// 	var container = document.getElementById(element);
+// 	// Reset font-size to 100% to begin
+// 	container.style.fontSize = '100%';
+// 	console.log(container.scrollWidth);
+// 	console.log(container.clientWidth);
+// 	// Check if the text is wider than its container,
+// 	// if so then reduce font-size
+// 	if (container.scrollHeight > container.clientHeight || container.scrollWidth > container.clientWidth) {
+//         var percentage = 100
+//         percentage -= 20;
+//         container.style.fontSize = toFontSizeFormat(percentage);
+// 	}
+// }
 
 function toFontSizeFormat(num) {
 	return "'" + num.toString() + "%'";
@@ -434,7 +436,7 @@ function clearAllSelections() {
 	}
 
 	// turn all appearance buttons to any
-	let appearanceTypes = ["intitle","inurl", "inlinks", "intext"];
+	let appearanceTypes = [ 'intitle', 'inurl', 'inlinks', 'intext' ];
 	for (idName of appearanceTypes) {
 		let anyElement = document.getElementById(idName + '-any');
 		let allElement = document.getElementById(idName + '-all');
@@ -446,7 +448,6 @@ function clearAllSelections() {
 		allElement.classList.add('button');
 	}
 }
-
 
 /**
  * Creates a string with AND or OR between keywords
@@ -478,7 +479,7 @@ function getLogicOp(operator, keywordArray, prefix) {
 	//fixes bug that adds space when comma with no letters after it typed
 	if ('' == keywordArray[keywordArray.length - 1].trim()) return out + ' )';
 	//closes parentheses
-	return out + ' ' + prefix + keywordArray[keywordArray.length - 1] + ' )';;
+	return out + ' ' + prefix + keywordArray[keywordArray.length - 1] + ' )';
 }
 
 /**
@@ -492,26 +493,27 @@ function joinWithSpaces(array) {
 	}
 	return out;
 }
-function popUp(modalName,idName) {
+
+function popUp(modalName, idName) {
 	var modal = document.getElementById(modalName);
 	var btn = document.getElementById(idName);
 
 	// get <span> doc for closing the modal (box)
-	var span = document.getElementsByClassName("close")[0];
+	var span = document.getElementsByClassName('close')[0];
 
 	btn.onclick = function() {
-		modal.style.display = "block";
-	}
+		modal.style.display = 'block';
+	};
 
 	// close modal on clicking (x)
-	span.onclick = function() { 
-		modal.style.display = "none";
-	}
+	span.onclick = function() {
+		modal.style.display = 'none';
+	};
 
 	// close modal when user clicks on window (outside modal)
 	window.onclick = function(event) {
 		if (event.target == modal) {
-			modal.style.display = "none";
+			modal.style.display = 'none';
 		}
-	}
+	};
 }
