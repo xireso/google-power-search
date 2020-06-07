@@ -587,3 +587,8 @@ window.addEventListener('load', function() {
 		}
 	};
 });
+
+//search google if enter hit
+document.addEventListener("keypress", function onEvent(event) {
+    if (event.key === "Enter") searchGoogle();
+});
