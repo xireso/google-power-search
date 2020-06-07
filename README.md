@@ -1,4 +1,4 @@
-# advanced-google-search
+# powerful-google-search
 A power tool for power users of Google. This website ([http://advanced-google-search.rf.gd/](http://advanced-google-search.rf.gd/)) helps you find more relevant, personalized, and useful results from your Google searches. 
 
 # 30 second pitch
@@ -26,7 +26,7 @@ Additionally, placing each module in close proximity with each other appeals to 
 ### Our first prototype (complete with the ideas and requirements)
 ![Our first prototype](/DocumentationImages/prototype-1.png)
 
-### Second prototype (this time with some *~google~* colors)
+### Second prototype (this time with some *~\Google\~* colors)
 ![prototype #2](/DocumentationImages/prototype-2.png)
 
 ### Final prototype (search bar and module locations moved + dark background)
