@@ -529,7 +529,7 @@ function joinWithSpaces(array) {
 /* 
 * called to display/hide an instructional modal on "How to Use" the tool 
 */
-function helpPopUp() {
+window.addEventListener('load', function() {
 	var modal = document.getElementById('helpModal');
 	var btn = document.getElementById('helpBtn');
 	var span = document.getElementById('helpSpan');
@@ -555,12 +555,12 @@ function helpPopUp() {
 			modalB.style.display = 'none';
 		}
 	};
-}
+});
 
 /*
 * called to display/hide a modal of example uses for our tool
 */
-function exPopUp() {
+window.addEventListener('load', function() {
 	var modal = document.getElementById('exModal');
 	var btn = document.getElementById('exBtn');
 	var span = document.getElementById('exSpan');
@@ -586,4 +586,4 @@ function exPopUp() {
 			modalB.style.display = 'none';
 		}
 	};
-}
+});
