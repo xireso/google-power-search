@@ -1,4 +1,4 @@
-# powerful-google-search
+# google-power-search
 A power tool for power users of Google. This website ([http://advanced-google-search.rf.gd/](http://advanced-google-search.rf.gd/)) helps you find more relevant, personalized, and useful results from your Google searches. 
 
 # 30 second pitch
@@ -11,11 +11,17 @@ Coming off of a tough semester with lots of new languages, algorithms, and frame
 We built this for the 2020 Hack the Northeast (HTNE) -- a virtual hackathon.
 
 # Ideation
-Nearly everyone uses Google to search the web, but there is, in fact, an ["Advanced Search"](https://www.google.com/advanced_search)
-for power users. It looks something like:
-![Google's original advance search](/DocumentationImages/og-search.png)
- 
-We wanted to improve on Google's design, and thought it would be an achievable, yet impactful, project for this hackathon.
+Nearly everyone uses Google to search the web, but there are, in fact, advanced operators that can be used to augment the regular searches. For example, here is an (almost complete) list of operators.
+
+![Advanced Search List](/DocumentationImages/infographic.png)
+Source: https://www.webfx.com/blog/google-2/google-advanced-search-operators-cheat-sheet/
+
+## Why we built this
+Back in 2014, one of our team members was sitting bored in his Human Geography class when he noticed a poster on the wall. It touted the use of "Advanced Google Search Operators" for more effective Googling. He stayed after class to study the poster, picking up a few basic operators for his daily use. These operators have helped him to this day, and now, 6 years later, he's back with a team.
+
+It has been said that "Life is like Google: You need to know what you're searching for." Offering customized ways to search the internet, we are set on making this simple tool to make it easier for anyone to do exactly that.
+
+tl;dr: Public school inspired us to make an achievable, yet impactful, project for this hackathon.
 
 # Inspiration 
 In addition to the search modification functionality, we also wanted to generate the "Search String" as the user started to list requirements. Because the user can see the Search String being built, it gives them control over their inputs. And, in each text field's default state, inputs are prefilled with suggestions which prompts the user to type inputs in the correct format.
@@ -29,7 +35,7 @@ Additionally, placing each module in close proximity with each other appeals to 
 ### Second prototype (this time with some *~\Google\~* colors)
 ![prototype #2](/DocumentationImages/prototype-2.png)
 
-### Final prototype (search bar and module locations moved + dark background)
+### Third prototype (search bar and module locations moved + dark background)
 ![prototype #3](/DocumentationImages/prototype-3.png)
 
 # Overview of iterations
@@ -39,10 +45,10 @@ In the interest of time, we used rapid prototyping--we're not kidding...
 # Contributors
 We are all rising Bowdoin College juniors who study Computer Science. However, between the four of us, we also have interests in Biology, Education, Theology, History, and Environmental Sustainability.
 
-### Joshua "Alskdkfj" Lin
-Will beat you at ping pong, will do your dishes.
+### Joshua "Ball" Lin
+Will beat you at ping pong, or will do your dishes.
 ### Rose ":)" Xi
-Has perfect pitch, UI is her bae.
+Has perfect pitch, and UI is her bae.
 ### Steven "Likes" Xu
 Will copy/paste js functions many times.
 ### Laura "Avatar" Friel
