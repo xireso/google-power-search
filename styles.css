@@ -18,16 +18,22 @@
 	--red-dim: #d1a59b;
 	--yellow-dim: #e1c882;
 	--green-dim: #7fa894;
+
+	--header-font: "Playfair Display";
+	--body-font: "Roboto";
+	--search-font: "Roboto Slab";
 }
 
 /* set css for general elements */
 
 body {
 	background-color: #2d2d2d;
-	font-family: Roboto;
+	font-family: var(--body-font);
 
-	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), rgba(181, 181, 181, 0.4)),
-		url("https://source.unsplash.com/1600x900/?colorful");
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), rgba(49, 49, 49, 0.6)),
+		url("https://source.unsplash.com/collection/10626135");
+
+	background-size: cover;
 }
 
 .big-section {
@@ -43,13 +49,25 @@ body {
 }
 
 h1 {
-	font-family: "Playfair Display";
+	font-family: var(--header-font);
 	font-size: 1.4rem;
 	margin-bottom: 0.5rem;
 }
 
-html {
-	height: 100%;
+.blue {
+	color: var(--blue);
+}
+
+.red {
+	color: var(--red);
+}
+
+.yellow {
+	color: var(--yellow);
+}
+
+.green {
+	color: var(--green);
 }
 
 .vertical {
@@ -88,28 +106,63 @@ button {
 	color: black;
 }
 
+.section-content {
+	margin: auto 0;
+}
+
+/* grid for sections */
+
+.grid {
+	display: grid;
+
+	grid-template-areas: "title title clear" "search search narrow" "find specific narrow" "find specific exclude";
+
+	grid-template-columns: 32% 35% 33%;
+	grid-template-rows: auto 30% 10% auto;
+
+	padding: 1%;
+	padding-top: 3%;
+	margin: auto;
+
+	max-width: 1100px;
+}
+
+/* hide sticky ver of title, clear button and search bar for desktop size */
+.sticky {
+	display: none;
+}
+
 /* page title */
 
 .page-title {
+	grid-area: title;
+
 	color: white;
-	text-align: center;
+	text-align: right;
 	font-size: 2.2rem;
+	margin-top: 0;
+
+	padding-bottom: 8px;
 }
 
 .clear-button {
+	grid-area: clear;
+
+	vertical-align: center;
+	justify-self: right;
+
+	width: 38%;
+	height: 40px;
+
+	font-family: var(--body-font);
 	font-size: 0.9rem;
 
-	position: absolute;
-	right: 3.5%;
-	top: 12%;
-
-	font-family: Roboto;
 	padding: 11px;
+	margin-right: 16px;
 	border-radius: 13px;
 	border: none;
 
 	color: white;
-
 	background-color: rgba(196, 196, 196, 0.4);
 }
 
@@ -118,23 +171,10 @@ button {
 	color: black;
 }
 
-/* grid for sections */
-
-.grid {
-	/* background-color: red; */
-	display: grid;
-
-	grid-template-areas: "search search narrow" "find specific narrow" "find specific exclude";
-	grid-template-columns: 32% 35% 33%;
-	grid-template-rows: 35% 10% auto;
-
-	padding: 2%;
-	padding-top: 1%;
-}
-
 /* find pages section (blue) */
 .find-pages {
 	grid-area: find;
+	display: grid;
 }
 
 .find-pages .vertical {
@@ -171,6 +211,7 @@ button {
 /* specific section (red) */
 .specific-pages {
 	grid-area: specific;
+	display: grid;
 }
 
 .specific-pages .vertical {
@@ -223,6 +264,7 @@ button {
 /* narrow down results section */
 .narrow-results {
 	grid-area: narrow;
+	display: grid;
 }
 
 .narrow-results .vertical {
@@ -259,6 +301,7 @@ button {
 /* exclude results section */
 .exclude-results {
 	grid-area: exclude;
+	display: grid;
 }
 
 .exclude-results .vertical {
@@ -317,17 +360,20 @@ button {
 	height: 65px;
 }
 
-#searchString {
+#searchString,
+#searchString2 {
 	display: inline-block;
 
-	font-family: "Roboto Slab";
+	font-family: var(--search-font);
 	font-size: 1.1rem;
 	margin: 20px;
 	width: 82%;
 
 	background-color: transparent;
 	border: none;
+}
 
+#searchString {
 	background-image: -webkit-linear-gradient(
 		5deg,
 		rgba(66, 133, 244, 1) 0%,
@@ -359,19 +405,16 @@ button {
 	width: 69px;
 	height: 69px;
 	bottom: -2px;
-	/* transform: rotate(20deg); */
 }
 
 .search-button:focus {
 	width: 65px;
 	height: 65px;
 	bottom: 2px;
-	/* transform: rotate(20deg); */
 }
 
 .search-button:hover .search-icon {
 	fill: black;
-	/* stroke: black; */
 }
 
 .search-icon {
@@ -413,22 +456,18 @@ button {
 }
 
 .modal-section {
-	/* display: inline-block; */
 	margin: 2px;
 }
 
 .modal-button {
-	font-family: Roboto;
+	font-family: var(--body-font);
 	font-size: 0.9rem;
 	font-weight: 500;
 
 	padding: 13px;
-	width: 120px;
 	border-radius: 9px;
 
 	margin-right: 6px;
-
-	/* border: 2px solid rgba(0, 0, 0, 0.7); */
 
 	color: white;
 	background-color: transparent;
@@ -474,12 +513,21 @@ Background of the Modal Box
 .modal-content {
 	background-color: #ffffff;
 
-	border-radius: 5px;
+	border-radius: 14px;
 	margin: 6% auto; /* x% from top + auto-centered */
 	padding: 20px;
-	width: 33%; /*vary depending on screen dimensions*/
+	width: 80%; /* vary depending on screen dimensions */
+	max-width: 500px;
 	animation-name: animatetop;
 	animation-duration: .4s;
+}
+
+.modal-text {
+	margin-left: 5%;
+}
+
+.modal-header {
+	margin: 28px 0 8px 3px;
 }
 
 /* add animation */
@@ -509,22 +557,124 @@ Background of the Modal Box
 	cursor: pointer;
 }
 
-.blue-header {
-	color: var(--blue);
-}
-
-.red-header {
-	color: var(--red);
-}
-
-.yellow-header {
-	color: var(--yellow);
-}
-
-.green-header {
-	color: var(--green);
+ul {
+	margin: 0;
 }
 
 .center {
 	text-align: center;
+}
+
+/* responsive */
+
+/* for small-medium devices */
+
+@media (max-width: 1065px) {
+	.grid {
+		grid-template-columns: 50% 50%;
+		grid-template-rows: 8% 20% 30% 10% auto;
+		grid-template-areas: "sticky sticky" "sticky sticky" "find narrow" "find specific" "exclude specific";
+
+		max-width: 800px;
+		margin: auto auto;
+		margin-bottom: 25px;
+
+		padding-top: 0;
+	}
+
+	.header-section {
+		padding: 0;
+		margin: 0;
+	}
+
+	/* no background :( */
+	body {
+		background-color: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), rgba(49, 49, 49, 0.6));
+		background-image: none;
+	}
+
+	.sticky {
+		grid-area: sticky;
+		margin: 0;
+		padding: 0;
+
+		background-color: #2c2c2c;
+
+		position: sticky;
+		top: 0;
+
+		display: grid;
+
+		grid-template-columns: 50% auto;
+		grid-template-rows: 30% auto;
+		grid-template-areas: "title clear" "search search";
+	}
+
+	.page-title {
+		text-align: left;
+		margin-left: 19px;
+
+		font-size: 2.1rem;
+
+		margin-top: 20px;
+	}
+
+	.clear-button {
+		margin-top: 26px;
+		width: 130px;
+	}
+
+	/* don't show regular ver of page title, search bar, and clear button */
+	.non-sticky {
+		display: none;
+	}
+}
+
+/* for smallest devices */
+@media (max-width: 752px) {
+	.grid {
+		grid-template-columns: 50% 50%;
+		grid-template-rows: 15% auto;
+		grid-template-areas: "sticky sticky" "find find" "exclude exclude" "narrow narrow" "specific specific";
+
+		max-width: 400px;
+		margin: 40px auto;
+	}
+
+	.sticky {
+		grid-template-columns: 70% auto;
+		grid-template-rows: 28% auto;
+	}
+
+	.page-title {
+		font-size: 1.6rem;
+		align-self: flex-end;
+	}
+
+	.clear-button {
+		position: relative;
+		left: 15px;
+		bottom: 5px;
+
+		width: 100px;
+		height: 25px;
+
+		padding: 0;
+		border-radius: 7px;
+
+		font-size: 12px;
+	}
+
+	.search-header {
+		font-size: 1.4rem;
+	}
+
+	.google-search-bar {
+		margin: 0;
+		height: 150px;
+	}
+
+	#searchString2 {
+		font-size: 15px;
+	}
 }

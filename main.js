@@ -70,6 +70,7 @@ function updateSearchString() {
 		if (searchElement != undefined) searchString += searchElement + ' ';
 	}
 	document.getElementById('searchString').value = searchString;
+	document.getElementById('searchString2').value = searchString;
 
 	scaleFontSize('searchString');
 }
@@ -331,25 +332,36 @@ function fileTypeToggle(idName) {
  */
 function updateFiles(narrowOrExclude) {
 	//array of file types in custom. preimptivley removes and '.' from string (ex .pdf -> pdf)
-	let delimit = document.getElementById(narrowOrExclude + CUSTOM_FILE_TYPE_SUFFIX).value.replace(/\./g,'').split(FILE_AND_DOMAIN_DELIMETER);
+	let delimit = document
+		.getElementById(narrowOrExclude + CUSTOM_FILE_TYPE_SUFFIX)
+		.value.replace(/\./g, '')
+		.split(FILE_AND_DOMAIN_DELIMETER);
 
 	switch (narrowOrExclude) {
 		case 'narrow':
 			//if custom input exists, concat narrow button selections with narrow custom array
-			if (!(delimit.length == 1 && delimit[0] == "")) {
+			if (!(delimit.length == 1 && delimit[0] == '')) {
 				searchStringElements[FILE_TYPE_INDEX] = getLogicOp(ANY_OP, narrowFiles.concat(delimit), FILE_PREFIX);
-			//just update narrow button selections
+				//just update narrow button selections
 			} else {
-				searchStringElements[FILE_TYPE_INDEX] = getLogicOp(ANY_OP, narrowFiles, FILE_PREFIX)
+				searchStringElements[FILE_TYPE_INDEX] = getLogicOp(ANY_OP, narrowFiles, FILE_PREFIX);
 			}
 			break;
 		case 'exclude':
 			//if custom input exists, concat narrow button selections with narrow custom array
-			if (!(delimit.length == 1 && delimit[0] == "")) {
-				searchStringElements[EXCLUDE_FILE_TYPE_INDEX] = getLogicOp(ALL_OP, excludeFiles.concat(delimit), EXCLUDE_PREFIX + FILE_PREFIX);
-			//just update narrow button selections
+			if (!(delimit.length == 1 && delimit[0] == '')) {
+				searchStringElements[EXCLUDE_FILE_TYPE_INDEX] = getLogicOp(
+					ALL_OP,
+					excludeFiles.concat(delimit),
+					EXCLUDE_PREFIX + FILE_PREFIX
+				);
+				//just update narrow button selections
 			} else {
-				searchStringElements[EXCLUDE_FILE_TYPE_INDEX] = getLogicOp(ALL_OP, excludeFiles, EXCLUDE_PREFIX + FILE_PREFIX);
+				searchStringElements[EXCLUDE_FILE_TYPE_INDEX] = getLogicOp(
+					ALL_OP,
+					excludeFiles,
+					EXCLUDE_PREFIX + FILE_PREFIX
+				);
 			}
 			break;
 	}
@@ -589,6 +601,6 @@ window.addEventListener('load', function() {
 });
 
 //search google if enter hit
-document.addEventListener("keypress", function onEvent(event) {
-    if (event.key === "Enter") searchGoogle();
+document.addEventListener('keypress', function onEvent(event) {
+	if (event.key === 'Enter') searchGoogle();
 });

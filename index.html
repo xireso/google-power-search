@@ -14,6 +14,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500;700&family=Roboto+Slab:wght@500&display=swap"
         rel="stylesheet">
 
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&family=Bitter:wght@400;500;700&family=Roboto+Slab:wght@500&display=swap"
+        rel="stylesheet">
+
 </head>
 
 <body>
@@ -52,16 +55,18 @@
             <!-- &times; = 'x' (multiplication symbol) -->
             <span id="helpSpan" class="close">&times;</span>
             <h1 class="center">Getting Started:</h1>
-            <h3 class="blue-header">1. Enter a search query</h3>
-                <ul> 
-                    <li>You want text in AT LEAST one search line</li>
-                    <li>A line in any box goes! (except red)</li>
-                </ul>
-             <h3 class="red-header">2. (Opt.) Add additional specifications</h3>
-                <ul> 
-                    <li>Customize your search!</li>
-                </ul>
-             <h3 class="green-header">3. Click the Search Icon or hit Enter!</h3>
+            <div class="modal-text">
+                <h3 class="blue modal-header">1. Enter a search query</h3>
+                    <ul> 
+                        <li>You want text in AT LEAST one search line</li>
+                        <li>A line in any box goes! (except red)</li>
+                    </ul>
+                <h3 class="red modal-header">2. (Opt.) Add additional specifications</h3>
+                    <ul> 
+                        <li>Customize your search!</li>
+                    </ul>
+                <h3 class="green modal-header">3. Click the Search Icon or hit Enter!</h3>
+            </div>
         </div>
     </div> 
     
@@ -70,7 +75,8 @@
         <div class="modal-content">
             <span id="exSpan" class="close">&times;</span>
             <h1 class="center">Prompts for Googling:</h1>
-            <h3 class="blue-header">Specific domains or News sources:</h3>
+            <div class="modal-text">
+                <h3 class="blue modal-header">Specific domains or News sources:</h3>
                 <ul> 
                     <li>.edu -> Institutions of Higher Education </li>
                     <li>.gov -> Government Websites </li>
@@ -79,187 +85,222 @@
                     <li>reddit.com -> Reddit</li>
                 </ul>
 
-            <h3 class="red-header">Find Powerpoints to play <a href="https://slidelizard.com/en/blog/powerpoint-karaoke-rules-and-free-download">Powerpoint Karoke:</a></h3>
+                <h3 class="red modal-header">Find Powerpoints to play <a href="https://slidelizard.com/en/blog/powerpoint-karaoke-rules-and-free-download">Powerpoint Karoke:</a></h3>
+                    <ul> 
+                        <li>Search by filetype: ppt</li>
+                        <li>Topics: environment, animals, technology, video games</li>
+                    </ul>
+
+                <h3 class="yellow modal-header">Find source code in a <a href="https://support.google.com/webmasters/answer/35287?hl=en">variety of languages</a>:</h3>
+                    <ul> 
+                        <li>Search by filetype: py, java, c, cs</li>
+                        <li>Explore how people have written: Sudoku, Tic Tac Toe, etc...</li>
+                    </ul>
+
+                <h3 class="green modal-header">Limit results to filetype pdf and easily find:</h3>
                 <ul> 
-                    <li>Search by filetype: ppt</li>
-                    <li>Topics: environment, animals, technology, video games</li>
+                    <li>e-Books!</li>
+                    <li>music!</li>
+                    <li>Company annual reports!</li>
                 </ul>
 
-            <h3 class="yellow-header">Find source code in a <a href="https://support.google.com/webmasters/answer/35287?hl=en">variety of languages</a>:</h3>
-                <ul> 
-                    <li>Search by filetype: py, java, c, cs</li>
-                    <li>Explore how people have written: Sudoku, Tic Tac Toe, etc...</li>
-                </ul>
+                <h2 class="modal-header">Have fun exploring!</h2>
+            </div>
 
-            <h3 class="green-header">Limit results to filetype pdf and easily find:</h3>
-            <ul> 
-                <li>e-Books!</li>
-                <li>music!</li>
-                <li>Company annual reports!</li>
-            </ul>
-
-            <h2>Have fun exploring!</h2>
+            
         </div>
     </div>    
 
-    <h1 class="page-title">Google Power Search</h1>
-    <button class="clear-button" onclick="clearAll()">Clear All Inputs</button>
 
 
     <div class="grid">
+        <div class="sticky">
+            <h1 class="page-title">Google Power Search</h1>
+            <button class="clear-button" onclick="clearAll()">Clear All Inputs</button>
+        
+            <!-- search bar -->
+            <div class="google-search-bar big-section">
+                <div class="section-content">
+    
+                    <h1 class="search-header">Generated Google Search String</h1>
+    
+                    <div class="search-bar"> 
+                        <input readonly type=text id="searchString2" value=' '>
+                        
+                        <button class="search-button" onclick="searchGoogle()">
+                            <img class="search-background"src="/googleSearchBkgrnd.png">
+            
+                            <svg class="search-icon" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24.2996 21.3836H22.7639L22.2196 20.8588C24.1905 18.5727 25.2737 15.6542 25.2716 12.6358C25.2716 10.1367 24.5305 7.69367 23.1421 5.61573C21.7536 3.53778 19.7802 1.91822 17.4713 0.961848C15.1624 0.00547489 12.6218 -0.244756 10.1707 0.242799C7.71957 0.730354 5.46809 1.9338 3.70094 3.70094C1.9338 5.46809 0.730354 7.71957 0.242799 10.1707C-0.244756 12.6218 0.00547489 15.1624 0.961848 17.4713C1.91822 19.7802 3.53778 21.7536 5.61573 23.1421C7.69367 24.5305 10.1367 25.2716 12.6358 25.2716C15.7656 25.2716 18.6427 24.1246 20.8588 22.2196L21.3836 22.7639V24.2996L31.1035 34L34 31.1035L24.2996 21.3836ZM12.6358 21.3836C7.79532 21.3836 3.88794 17.4763 3.88794 12.6358C3.88794 7.79532 7.79532 3.88794 12.6358 3.88794C17.4763 3.88794 21.3836 7.79532 21.3836 12.6358C21.3836 17.4763 17.4763 21.3836 12.6358 21.3836Z" fill="white"/>
+                            </svg>
+                        </button>
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1 class="non-sticky page-title">Google Power Search</h1>
+            <button class="non-sticky clear-button" onclick="clearAll()">Clear All Inputs</button>
+        
+            <!-- search bar -->
+            <div class="non-sticky google-search-bar big-section">
+                <div class="non-sticky section-content">
+    
+                    <h1 class="non-sticky search-header">Generated Google Search String</h1>
+    
+                    <div class="non-sticky search-bar"> 
+                        <input readonly type=text id="searchString" value=' '>
+                        
+                        <button class="search-button" onclick="searchGoogle()">
+                            <img class="search-background"src="/googleSearchBkgrnd.png">
+            
+                            <svg class="search-icon" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24.2996 21.3836H22.7639L22.2196 20.8588C24.1905 18.5727 25.2737 15.6542 25.2716 12.6358C25.2716 10.1367 24.5305 7.69367 23.1421 5.61573C21.7536 3.53778 19.7802 1.91822 17.4713 0.961848C15.1624 0.00547489 12.6218 -0.244756 10.1707 0.242799C7.71957 0.730354 5.46809 1.9338 3.70094 3.70094C1.9338 5.46809 0.730354 7.71957 0.242799 10.1707C-0.244756 12.6218 0.00547489 15.1624 0.961848 17.4713C1.91822 19.7802 3.53778 21.7536 5.61573 23.1421C7.69367 24.5305 10.1367 25.2716 12.6358 25.2716C15.7656 25.2716 18.6427 24.1246 20.8588 22.2196L21.3836 22.7639V24.2996L31.1035 34L34 31.1035L24.2996 21.3836ZM12.6358 21.3836C7.79532 21.3836 3.88794 17.4763 3.88794 12.6358C3.88794 7.79532 7.79532 3.88794 12.6358 3.88794C17.4763 3.88794 21.3836 7.79532 21.3836 12.6358C21.3836 17.4763 17.4763 21.3836 12.6358 21.3836Z" fill="white"/>
+                            </svg>
+                        </button>
+    
+                    </div>
+                </div>
+            </div>
+
         <!-- Module for "Find pages with:" -->
         <div class="find-pages big-section">
+            <div class="section-content">
+                <h1 class="blue">Find pages with:</h1>
 
-            <h1 class="blue-header">Find pages with:</h1>
+                <div class="find-pages vertical"></div>
 
-            <div class="find-pages vertical"></div>
+                <div class="all module">
+                    <label for="all"><b>All</b> of these keywords <p class="sidenote">(default search)</p></label><br>
+                    <input type="text" class="all field"
+                        value=""
+                        placeholder="ex. saturday night live"
+                        onkeyup="updateAll()"
+                    >
+                </div>
 
-            <div class="all module">
-                <label for="all"><b>All</b> of these keywords <p class="sidenote">(default search)</p></label><br>
-                <input type="text" class="all field"
-                    value=""
-                    placeholder="ex. saturday night live"
-                    onkeyup="updateAll()"
-                >
-            </div>
+                <div class="any module">
+                    <label for="any"><b>Any</b> of these keywords</label><br>
+                    <input type="text" class="any field"
+                        value=""
+                        placeholder="ex. coronavirus COVID"
+                        onkeyup="updateAny()"
+                    >
+                    <br>
+                </div>
 
-            <div class="any module">
-                <label for="any"><b>Any</b> of these keywords</label><br>
-                <input type="text" class="any field"
-                    value=""
-                    placeholder="ex. coronavirus COVID"
-                    onkeyup="updateAny()"
-                >
-                <br>
-            </div>
+                <div class="exact module">
+                    <label for="exact">This <b>exact</b> word or phrase</label><br>
+                    <input type="text" class="exact field" 
+                        value="" 
+                        placeholder="ex. may the force be with you"
+                        onkeyup="updateExact()"
+                    >
+                </div>
 
-            <div class="exact module">
-                <label for="exact">This <b>exact</b> word or phrase</label><br>
-                <input type="text" class="exact field" 
-                    value="" 
-                    placeholder="ex. may the force be with you"
-                    onkeyup="updateExact()"
-                >
-            </div>
-
-
-            <div class="apart module">
-                <p>
-                    <input type="text" class="apart field" id="keyword1" value="" placeholder="ex. pop" onkeyup="updateApart()">
-                    and
-                    <input type="text" class="apart field" id="keyword2" value="" placeholder="ex. culture" onkeyup="updateApart()"><br>
-                    less than
-                    <input type="text" class="apart field" id="numWordsApart" value="" placeholder="4" onkeyup="updateApart()">
-                    words apart
-
-                </p>
+                <div class="apart module">
+                    <p>
+                        <input type="text" class="apart field" id="keyword1" value="" placeholder="ex. pop" onkeyup="updateApart()">
+                        and
+                        <input type="text" class="apart field" id="keyword2" value="" placeholder="ex. culture" onkeyup="updateApart()"><br>
+                        less than
+                        <input type="text" class="apart field" id="numWordsApart" value="" placeholder="4" onkeyup="updateApart()">
+                        words apart
+                    </p>
+                </div>
             </div>
         </div>
 
         <!-- Module for "Pages with appearances of:" -->
         <div class="specific-pages big-section">
+            <div class="section-content">
+                <h1 class="red">Pages with appearances of:</h1>
 
-            <h1 class="red-header">Pages with appearances of:</h1>
+                <div class="specific-pages vertical"></div>
 
-            <div class="specific-pages vertical"></div>
+                <div class="intitle module">
+                    <button type="button" class="intitle button-highlight" id="intitle-any" onclick="anyAllToggle('intitle', true)">Any</button>
+                    <button type="button" class="intitle button" id="intitle-all" onclick="anyAllToggle('intitle', false)">All</button>
+                    <label for="intitle">of these terms in the <b>title</b></label><br>
+                    <input type="text" class="intitle field" id ="intitleInput" value="" placeholder="ex. hack the northeast" onkeyup="updateAppearancesSection('intitle')">
+                </div>
 
-            <div class="intitle module">
-                <button type="button" class="intitle button-highlight" id="intitle-any" onclick="anyAllToggle('intitle', true)">Any</button>
-                <button type="button" class="intitle button" id="intitle-all" onclick="anyAllToggle('intitle', false)">All</button>
-                <label for="intitle">of these terms in the <b>title</b></label><br>
-                <input type="text" class="intitle field" id ="intitleInput" value="" placeholder="ex. hack the northeast" onkeyup="updateAppearancesSection('intitle')">
-            </div>
+                <div class="inurl module">
+                    <button type="button" class="url button-highlight" id="inurl-any" onclick="anyAllToggle('inurl', true)">Any</button>
+                    <button type="button" class="url button" id="inurl-all" onclick="anyAllToggle('inurl', false)">All</button>
+                    <label for="inurl">of these terms in the <b>URL</b></label><br>
+                    <input type="text" class="inurl field" id ="inurlInput" value="" placeholder="ex. hackathon cs" onkeyup="updateAppearancesSection('inurl')">
+                </div>
+                
+                <div class="intext module">
+                    <button type="button" class="intext button-highlight" id="intext-any" onclick="anyAllToggle('intext', true)">Any</button>
+                    <button type="button" class="intext button" id="intext-all" onclick="anyAllToggle('intext', false)">All</button>
+                    <label for="intext">of these terms in the <b>text</b></label><br>
+                    <input type="text" class="intext field" id ="intextInput" value="" placeholder="ex. javascript workshop" onkeyup="updateAppearancesSection('intext')">
+                </div>
 
-            <div class="inurl module">
-                <button type="button" class="url button-highlight" id="inurl-any" onclick="anyAllToggle('inurl', true)">Any</button>
-                <button type="button" class="url button" id="inurl-all" onclick="anyAllToggle('inurl', false)">All</button>
-                <label for="inurl">of these terms in the <b>URL</b></label><br>
-                <input type="text" class="inurl field" id ="inurlInput" value="" placeholder="ex. hackathon cs" onkeyup="updateAppearancesSection('inurl')">
-            </div>
-            
-            <div class="intext module">
-                <button type="button" class="intext button-highlight" id="intext-any" onclick="anyAllToggle('intext', true)">Any</button>
-                <button type="button" class="intext button" id="intext-all" onclick="anyAllToggle('intext', false)">All</button>
-                <label for="intext">of these terms in the <b>text</b></label><br>
-                <input type="text" class="intext field" id ="intextInput" value="" placeholder="ex. javascript workshop" onkeyup="updateAppearancesSection('intext')">
-            </div>
-
-            <div class="inlinks module">
-                <button type="button" class="inlinks button-highlight" id="inlinks-any" onclick="anyAllToggle('inlinks', true)">Any</button>
-                <button type="button" class="inlinks button" id="inlinks-all" onclick="anyAllToggle('inlinks', false)">All</button>
-                <label for="inlinks">terms in <b>links</b> on the page</label><br>
-                <input type="text" class="inlinks field" id ="inlinksInput" value="" placeholder="ex. react resource" onkeyup="updateAppearancesSection('inlinks')">
+                <div class="inlinks module">
+                    <button type="button" class="inlinks button-highlight" id="inlinks-any" onclick="anyAllToggle('inlinks', true)">Any</button>
+                    <button type="button" class="inlinks button" id="inlinks-all" onclick="anyAllToggle('inlinks', false)">All</button>
+                    <label for="inlinks">terms in <b>links</b> on the page</label><br>
+                    <input type="text" class="inlinks field" id ="inlinksInput" value="" placeholder="ex. react resource" onkeyup="updateAppearancesSection('inlinks')">
+                </div>
             </div>
         </div>
 
 
         <!-- Module for "Narrow down results:" -->
         <div class="narrow-results big-section">
+            <div class="section-content">
+                <h1 class="yellow">Narrow down results:</h1>
 
-            <h1 class="yellow-header">Narrow down results:</h1>
+                <div class="narrow-results vertical"></div>
 
-            <div class="narrow-results vertical"></div>
+                <div class="filetype module">
+                    <label for="filetype">By <b>file type</b></label><br>
+                    <button type="button" class="filetype button" id="pdf-file-narrow" onclick="fileTypeToggle('pdf-file-narrow')">pdf</button>
+                    <button type="button" class="filetype button" id="txt-file-narrow" onclick="fileTypeToggle('txt-file-narrow')">txt</button>
+                    <button type="button" class="filetype button" id="doc-file-narrow" onclick="fileTypeToggle('doc-file-narrow')">doc</button>
+                    <button type="button" class="filetype button" id="xls-file-narrow" onclick="fileTypeToggle('xls-file-narrow')">xls</button>
+                    <button type="button" class="filetype button" id="ppt-file-narrow" onclick="fileTypeToggle('ppt-file-narrow')">ppt</button><br>
+                    <input type="text" class="field" id="narrow-filetype-field" value="" placeholder="custom file type (svg, tex, rtf, py, etc.)" onkeyup="updateFiles('narrow')">
+                </div>
 
-            <div class="filetype module">
-                <label for="filetype">By <b>file type</b></label><br>
-                <button type="button" class="filetype button" id="pdf-file-narrow" onclick="fileTypeToggle('pdf-file-narrow')">pdf</button>
-                <button type="button" class="filetype button" id="txt-file-narrow" onclick="fileTypeToggle('txt-file-narrow')">txt</button>
-                <button type="button" class="filetype button" id="doc-file-narrow" onclick="fileTypeToggle('doc-file-narrow')">doc</button>
-                <button type="button" class="filetype button" id="xls-file-narrow" onclick="fileTypeToggle('xls-file-narrow')">xls</button>
-                <button type="button" class="filetype button" id="ppt-file-narrow" onclick="fileTypeToggle('ppt-file-narrow')">ppt</button><br>
-                <input type="text" class="field" id="narrow-filetype-field" value="" placeholder="custom file type (svg, tex, rtf, py, etc.)" onkeyup="updateFiles('narrow')">
-            </div>
-
-            <div class="domain module">
-                <label for="domain">By <b>website/domain</b></label><br>
-                <input type="text" class="domain field" value="" placeholder="ex. reddit.com .edu .gov .jp" onkeyup="updateDomain('narrow')">
+                <div class="domain module">
+                    <label for="domain">By <b>website/domain</b></label><br>
+                    <input type="text" class="domain field" value="" placeholder="ex. reddit.com .edu .gov .jp" onkeyup="updateDomain('narrow')">
+                </div>
             </div>
         </div>
 
 
         <!-- Module for "Exclude results:" -->
         <div class="exclude-results big-section">
+            <div class="section-content">
+                <h1 class="green">Exclude results:</h1>
 
-            <h1 class="green-header">Exclude results:</h1>
+                <div class="exclude-results vertical"></div>
 
-            <div class="exclude-results vertical"></div>
+                <div class="exclude-keywords module">
+                    <label for="exclude-keywords">Containing <b>keywords</b></label><br>
+                    <input type="text" class="exclude-keywords field" value="" placeholder="ex. ipad iphone" onkeyup="updateExcludeKeywords()"><br>
+                </div>
 
-            <div class="exclude-keywords module">
-                <label for="exclude-keywords">Containing <b>keywords</b></label><br>
-                <input type="text" class="exclude-keywords field" value="" placeholder="ex. ipad iphone" onkeyup="updateExcludeKeywords()"><br>
-            </div>
+                <div class="domain module">
+                    <label for="domain">From <b>website/domain</b></label><br>            
+                    <input type="text" class="domain field" value="" placeholder="ex. urbandictionary.com" onkeyup="updateDomain('exclude')"><br>
+                </div>
 
-            <div class="domain module">
-                <label for="domain">From <b>website/domain</b></label><br>            
-                <input type="text" class="domain field" value="" placeholder="ex. urbandictionary.com" onkeyup="updateDomain('exclude')"><br>
-            </div>
-
-            <div class="filetype module">
-                <label for="filetype">By <b>file type</b></label><br>
-                <button type="button" class="filetype button" id="pdf-file-exclude" onclick="fileTypeToggle('pdf-file-exclude')">pdf</button>
-                <button type="button" class="filetype button" id="txt-file-exclude" onclick="fileTypeToggle('txt-file-exclude')">txt</button>
-                <button type="button" class="filetype button" id="doc-file-exclude" onclick="fileTypeToggle('doc-file-exclude')">doc</button>
-                <button type="button" class="filetype button" id="xls-file-exclude" onclick="fileTypeToggle('xls-file-exclude')">xls</button>
-                <button type="button" class="filetype button" id="ppt-file-exclude" onclick="fileTypeToggle('ppt-file-exclude')">ppt</button><br>
-                <input type="text" class="field" id="exclude-filetype-field" value="" placeholder="custom file type (svg, tex, rtf, py, etc.)" onkeyup="updateFiles('exclude')">
-            </div>
-        </div>
-
-        <!-- search bar -->
-        <div class="google-search-bar big-section">
-            <h1 class="search-header">Generated Google Search String</h1>
-
-            <div class="search-bar"> 
-                <input readonly type=text id="searchString" value=' '>
-                
-                <button class="search-button" onclick="searchGoogle()">
-                    <img class="search-background"src="/googleSearchBkgrnd.png">
-    
-                    <svg class="search-icon" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M24.2996 21.3836H22.7639L22.2196 20.8588C24.1905 18.5727 25.2737 15.6542 25.2716 12.6358C25.2716 10.1367 24.5305 7.69367 23.1421 5.61573C21.7536 3.53778 19.7802 1.91822 17.4713 0.961848C15.1624 0.00547489 12.6218 -0.244756 10.1707 0.242799C7.71957 0.730354 5.46809 1.9338 3.70094 3.70094C1.9338 5.46809 0.730354 7.71957 0.242799 10.1707C-0.244756 12.6218 0.00547489 15.1624 0.961848 17.4713C1.91822 19.7802 3.53778 21.7536 5.61573 23.1421C7.69367 24.5305 10.1367 25.2716 12.6358 25.2716C15.7656 25.2716 18.6427 24.1246 20.8588 22.2196L21.3836 22.7639V24.2996L31.1035 34L34 31.1035L24.2996 21.3836ZM12.6358 21.3836C7.79532 21.3836 3.88794 17.4763 3.88794 12.6358C3.88794 7.79532 7.79532 3.88794 12.6358 3.88794C17.4763 3.88794 21.3836 7.79532 21.3836 12.6358C21.3836 17.4763 17.4763 21.3836 12.6358 21.3836Z" fill="white"/>
-                    </svg>
-                </button>
-
+                <div class="filetype module">
+                    <label for="filetype">By <b>file type</b></label><br>
+                    <button type="button" class="filetype button" id="pdf-file-exclude" onclick="fileTypeToggle('pdf-file-exclude')">pdf</button>
+                    <button type="button" class="filetype button" id="txt-file-exclude" onclick="fileTypeToggle('txt-file-exclude')">txt</button>
+                    <button type="button" class="filetype button" id="doc-file-exclude" onclick="fileTypeToggle('doc-file-exclude')">doc</button>
+                    <button type="button" class="filetype button" id="xls-file-exclude" onclick="fileTypeToggle('xls-file-exclude')">xls</button>
+                    <button type="button" class="filetype button" id="ppt-file-exclude" onclick="fileTypeToggle('ppt-file-exclude')">ppt</button><br>
+                    <input type="text" class="field" id="exclude-filetype-field" value="" placeholder="custom file type (svg, tex, rtf, py, etc.)" onkeyup="updateFiles('exclude')">
+                </div>
             </div>
         </div>
     </div>
