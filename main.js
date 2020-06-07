@@ -331,7 +331,7 @@ function fileTypeToggle(idName) {
  */
 function updateFiles(narrowOrExclude) {
 	//array of file types in custom. preimptivley removes and '.' from string (ex .pdf -> pdf)
-	let delimit = document.getElementById(narrowOrExclude + CUSTOM_FILE_TYPE_SUFFIX).value.replace('.','').split(FILE_AND_DOMAIN_DELIMETER);
+	let delimit = document.getElementById(narrowOrExclude + CUSTOM_FILE_TYPE_SUFFIX).value.replace(/\./g,'').split(FILE_AND_DOMAIN_DELIMETER);
 
 	switch (narrowOrExclude) {
 		case 'narrow':
