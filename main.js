@@ -25,7 +25,8 @@ const ANY_OP = '|';
 const ALL_OP = 'AND';
 
 //delimiter to separate keywords
-const DELIMITER = ',';
+const KEYWORD_DELIMITER = ' ';
+const FILE_AND_DOMAIN_DELIMETER = ' ';
 
 //file type length
 const FILE_NAME_LENGTH = 3;
@@ -35,6 +36,9 @@ const FILE_PREFIX = 'filetype:';
 const SITE_PREFIX = 'site:';
 const ALL_INTITLE_PREFIX = 'all';
 const EXCLUDE_PREFIX = '-';
+
+//suffixs
+const CUSTOM_FILE_TYPE_SUFFIX = '-filetype-field';
 
 //default text size
 const DEFAULT_FONT_SIZE = 120;
@@ -85,7 +89,7 @@ function updateAll() {
  */
 function updateAny() {
 	let input = document.getElementsByClassName('any')[1].value;
-	let delimit = input.split(DELIMITER);
+	let delimit = input.split(KEYWORD_DELIMITER);
 	searchStringElements[ANY_INDEX] = getLogicOp(ANY_OP, delimit, '');
 	updateSearchString();
 }
@@ -133,6 +137,7 @@ function updateApart() {
  * called when domain module is modified either in narrow section or exclude section
  * creates string with site: in front of website / domain entered if in narrow section
  * and adds -site in front of domain  if in exclude section
+ * @param {String} excludeOrNarrow whether exclude or narrow domain being modified
  */
 function updateDomain(excludeOrNarrow) {
 	// default: if add domain (in narrow section), site: and join with OR
@@ -152,7 +157,7 @@ function updateDomain(excludeOrNarrow) {
 	let domains = document.getElementsByClassName('domain')[elementIndex].value;
 
 	if (domains) {
-		let delimit = domains.split(DELIMITER);
+		let delimit = domains.split(FILE_AND_DOMAIN_DELIMETER);
 		searchStringElements[indexType] = getLogicOp(operator, delimit, prefix);
 	} else {
 		//else here to make sure site: not left if content in field is deleted
@@ -171,7 +176,7 @@ function updateExcludeKeywords() {
 	let wordList = [];
 
 	if (input) {
-		let keywords = input.split(DELIMITER);
+		let keywords = input.split(KEYWORD_DELIMITER);
 
 		// add exclude prefix
 		for (const keyword of keywords) {
@@ -278,13 +283,14 @@ function updateAppearancesSection(idName) {
 		if (input) searchStringElements[changedIndex] =  ALL_INTITLE_PREFIX + idName + ':' + input;
 		else searchStringElements[changedIndex] = undefined;
 	}
+
 	updateSearchString();
 }
 
 /**
  * called when a file button clicked (in either narrow or exclude section)
  * records which buttons are selected for each section
- * call's updateNarrowFiles() or updateExclueFiles() depending on which section button was pushed
+ * call's updateFiles() to combine button selections with custom input
  * @param {String} idName id of which all/any button is selected 
  */
 function fileTypeToggle(idName) {
@@ -299,10 +305,10 @@ function fileTypeToggle(idName) {
 		//remove element from appropriate list and update
 		if (selectedNarrow) {
 			narrowFiles.splice(narrowFiles.indexOf(idName.substring(0, FILE_NAME_LENGTH)), 1);
-			updateNarrowFiles();
+			updateFiles('narrow');
 		} else {
 			excludeFiles.splice(excludeFiles.indexOf(idName.substring(0, FILE_NAME_LENGTH)), 1);
-			updateExcludedFiles();
+			updateFiles('exclude');
 		}
 	//selcect button
 	} else {
@@ -311,33 +317,43 @@ function fileTypeToggle(idName) {
 		//add element to appropriate list and update
 		if (selectedNarrow) {
 			narrowFiles.push(idName.substring(0, FILE_NAME_LENGTH));
-			updateNarrowFiles();
+			updateFiles('narrow');
 		} else {
 			excludeFiles.push(idName.substring(0, FILE_NAME_LENGTH));
-			updateExcludedFiles();
+			updateFiles('exclude');
 		}
 	}
 }
 
 /**
- * updates text for narrow files
- * called by fileTypeToggle when file button selected
- * CAN be simplified to one method with more parameters, but it seems
- * easier to be read as two different fuctions
+ * updates the appropriate search line for file types (both custom and buttons)
+ * @param {String} narrowOrExclude whether updating narrow or exclude search line
  */
-function updateNarrowFiles() {
-	searchStringElements[FILE_TYPE_INDEX] = getLogicOp(ANY_OP, narrowFiles, FILE_PREFIX);
-	updateSearchString();
-}
+function updateFiles(narrowOrExclude) {
+	//array of file types in custom
+	let delimit = document.getElementById(narrowOrExclude + CUSTOM_FILE_TYPE_SUFFIX).value.split(FILE_AND_DOMAIN_DELIMETER);
 
-/**
- * updates text for excluded files
- * called by fileTypeToggle when file button selected
- * CAN be simplified to one method with more parameters, but it seems
- * easier to be read as two different fuctions
- */
-function updateExcludedFiles() {
-	searchStringElements[EXCLUDE_FILE_TYPE_INDEX] = getLogicOp(ALL_OP, excludeFiles, EXCLUDE_PREFIX + FILE_PREFIX);
+	switch (narrowOrExclude) {
+		case 'narrow':
+			//if custom input exists, concat narrow button selections with narrow custom array
+			if (!(delimit.length == 1 && delimit[0] == "")) {
+				searchStringElements[FILE_TYPE_INDEX] = getLogicOp(ANY_OP, narrowFiles.concat(delimit), FILE_PREFIX);
+			//just update narrow button selections
+			} else {
+				searchStringElements[FILE_TYPE_INDEX] = getLogicOp(ANY_OP, narrowFiles, FILE_PREFIX)
+			}
+			break;
+		case 'exclude':
+			//if custom input exists, concat narrow button selections with narrow custom array
+			if (!(delimit.length == 1 && delimit[0] == "")) {
+				searchStringElements[EXCLUDE_FILE_TYPE_INDEX] = getLogicOp(ALL_OP, excludeFiles.concat(delimit), EXCLUDE_PREFIX + FILE_PREFIX);
+			//just update narrow button selections
+			} else {
+				searchStringElements[EXCLUDE_FILE_TYPE_INDEX] = getLogicOp(ALL_OP, excludeFiles, EXCLUDE_PREFIX + FILE_PREFIX);
+			}
+			break;
+	}
+
 	updateSearchString();
 }
 
@@ -349,6 +365,11 @@ function searchGoogle() {
 	window.open(URL);
 }
 
+/**
+ * !!! DOES NOT WORK AT THE MOMENT !!!
+ * scales font size so text does not disapear in search box
+ * @param {String} element for our purposes this is always searchString
+ */
 function scaleFontSize(element) {
 	var container = document.getElementById(element);
 
@@ -372,6 +393,7 @@ function scaleFontSize(element) {
 	console.log(container.scrollWidth);
 	console.log(container.clientWidth);
 }
+
 /*
 function scaleFontSize(element) {
 	var container = document.getElementById(element);
@@ -386,16 +408,26 @@ function scaleFontSize(element) {
 	}
 }*/
 
+/**
+ * helper to convert int to string of form 'num%'
+ * @param {int} num 
+ */
 function toFontSizeFormat(num) {
 	return "'" + num.toString() + "%'";
 }
 
+/**
+ * reset all values and webpage visuals
+ */
 function clearAll() {
 	currentFontSize = DEFAULT_FONT_SIZE;
 	clearAllInputs();
 	clearAllSelections();
 }
 
+/**
+ * helper for clearAll() which clears all inputs
+ */
 function clearAllInputs() {
 	// get every input element and clear the values
 	var inputElements = document.getElementsByTagName('input');
@@ -410,6 +442,9 @@ function clearAllInputs() {
 	searchStringElements = new Array(13);
 }
 
+/**
+ * helper for clearAll() which clears button selections
+ */
 function clearAllSelections() {
 	// reset file types selected
 	narrowFiles = [];
@@ -490,6 +525,12 @@ function joinWithSpaces(array) {
 	}
 	return out;
 }
+
+/**
+ * JOSH may you please fill this in?
+ * @param {*} modalName 
+ * @param {*} idName 
+ */
 function popUp(modalName,idName) {
 	var modal = document.getElementById(modalName);
 	var btn = document.getElementById(idName);
