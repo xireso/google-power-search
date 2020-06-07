@@ -86,7 +86,7 @@ html {
 	border-radius: 7px;
 	padding: 3px 8px;
 	margin: 5px 2px;
-	width: 53px;
+	width: 200px;
 	text-align: center;
 
 	font-weight: bold;
@@ -441,7 +441,7 @@ button {
 
 .modal-button {
 	font-family: Roboto;
-	font-size: 0.8rem;
+	font-size: 0.9rem;
 	font-weight: 500;
 
 	padding: 13px;

@@ -22,10 +22,10 @@ const EXCLUDE_FILE_TYPE_INDEX = 12;
 
 //Logic operators
 const ANY_OP = '|';
-const ALL_OP = '&';
+const ALL_OP = 'AND';
 
 //delimiter to separate keywords
-const DELIMITER = ' ';
+const DELIMITER = ',';
 
 //file type length
 const FILE_NAME_LENGTH = 3;
@@ -33,7 +33,7 @@ const FILE_NAME_LENGTH = 3;
 //prefixs
 const FILE_PREFIX = 'filetype:';
 const SITE_PREFIX = 'site:';
-const APPEARANCE_PREFIX = 'all';
+const ALL_INTITLE_PREFIX = 'all';
 const EXCLUDE_PREFIX = '-';
 
 //default text size
@@ -244,9 +244,7 @@ function anyAllToggle(idName, isAny) {
 function updateAppearancesSection(idName) {
 	//take input from appropraite section
 	let input = document.getElementById(idName + 'Input').value;
-	let delimit = input.split(DELIMITER);
 
-	let prefix = APPEARANCE_PREFIX + idName + ':';
 	//is any button selected for specific type (link, url, text, or title)
 	let isAnySelected;
 	//which element is being modified
@@ -274,10 +272,10 @@ function updateAppearancesSection(idName) {
 
 	//use any operator if any button selected. all operator if all button selected
 	if (isAnySelected) {
-		if (input) searchStringElements[changedIndex] = getLogicOp(ANY_OP, delimit, prefix);
+		if (input) searchStringElements[changedIndex] = idName + ':' + input;
 		else searchStringElements[changedIndex] = undefined;
 	} else {
-		if (input) searchStringElements[changedIndex] = getLogicOp(ALL_OP, delimit, prefix);
+		if (input) searchStringElements[changedIndex] = ALL_INTITLE_PREFIX + idName + ':' + input;
 		else searchStringElements[changedIndex] = undefined;
 	}
 	updateSearchString();
@@ -494,13 +492,15 @@ function joinWithSpaces(array) {
 	return out;
 }
 
-function popUp(modalName, idName) {
-	var modal = document.getElementById(modalName);
-	var btn = document.getElementById(idName);
+/* 
+* called to display/hide an instructional modal on "How to Use" the tool 
+*/
+function helpPopUp() {
+	var modal = document.getElementById('helpModal');
+	var btn = document.getElementById('helpBtn');
+	var span = document.getElementById('helpSpan');
 
-	// get <span> doc for closing the modal (box)
-	var span = document.getElementsByClassName('close')[0];
-
+	// display modal in main window
 	btn.onclick = function() {
 		modal.style.display = 'block';
 	};
@@ -510,10 +510,46 @@ function popUp(modalName, idName) {
 		modal.style.display = 'none';
 	};
 
+	// modalB is called here to catch cases where the window might be assigned the wrong modal
+	var modalB = document.getElementById('exModal');
+
 	// close modal when user clicks on window (outside modal)
 	window.onclick = function(event) {
 		if (event.target == modal) {
 			modal.style.display = 'none';
+		} else if (event.target == modalB) {
+			modalB.style.display = 'none';
+		}
+	};
+}
+
+/*
+* called to display/hide a modal of example uses for our tool
+*/
+function exPopUp() {
+	var modal = document.getElementById('exModal');
+	var btn = document.getElementById('exBtn');
+	var span = document.getElementById('exSpan');
+
+	// display modal in main window
+	btn.onclick = function() {
+		modal.style.display = 'block';
+	};
+
+	// close modal on clicking (x)
+	span.onclick = function() {
+		modal.style.display = 'none';
+	};
+
+	// modalB is called here to catch cases where the window might be assigned the wrong modal
+	var modalB = document.getElementById('helpModal');
+
+	// close modal when user clicks on window (outside modal)
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = 'none';
+		} else if (event.target == modalB) {
+			modalB.style.display = 'none';
 		}
 	};
 }
