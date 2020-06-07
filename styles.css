@@ -80,23 +80,6 @@ html {
 	font-weight: normal;
 }
 
-#filetype-field {
-	display: inline-block;
-	border: none;
-	border-radius: 7px;
-	padding: 3px 8px;
-	margin: 5px 2px;
-	width: 200px;
-	text-align: center;
-
-	font-weight: bold;
-}
-
-#filetype-field::placeholder {
-	font-size: 0.6rem;
-	font-weight: normal;
-}
-
 button {
 	border: none;
 	border-radius: 7px;
@@ -274,15 +257,6 @@ button {
 	background-color: var(--yellow-dark);
 }
 
-.narrow-results #filetype-field {
-	background-color: var(--yellow-light);
-	color: var(--yellow-dark);
-}
-
-.narrow-results #filetype-field::placeholder {
-	color: var(--yellow-dim);
-}
-
 /* exclude results section */
 .exclude-results {
 	grid-area: exclude;
@@ -317,15 +291,6 @@ button {
 	color: white;
 	font-weight: 600;
 	background-color: var(--green-dark);
-}
-
-.exclude-results #filetype-field {
-	background-color: var(--green-light);
-	color: var(--green-dark);
-}
-
-.exclude-results #filetype-field::placeholder {
-	color: var(--green-dim);
 }
 
 /* google search bar section */
@@ -398,6 +363,13 @@ button {
 	/* transform: rotate(20deg); */
 }
 
+.search-button:focus {
+	width: 65px;
+	height: 65px;
+	bottom: 2px;
+	/* transform: rotate(20deg); */
+}
+
 .search-button:hover .search-icon {
 	fill: black;
 	/* stroke: black; */
@@ -432,6 +404,7 @@ button {
 	display: inline-block;
 	color: white;
 	margin: 0 3px;
+	fill: white;
 }
 
 .modal-section {
