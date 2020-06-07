@@ -199,7 +199,7 @@
                 <!-- <button type="button" class="filetype button" id="tex-file-narrow" onclick="fileTypeToggle('tex-file-narrow')">.tex</button> -->
                 <button type="button" class="filetype button" id="xls-file-narrow" onclick="fileTypeToggle('xls-file-narrow')">.xls</button>
                 <button type="button" class="filetype button" id="ppt-file-narrow" onclick="fileTypeToggle('ppt-file-narrow')">.ppt</button><br>
-                <input type="text" id="filetype-field" value="" placeholder="custom file type (svg, tex, rtf, py, etc.)">
+                <input type="text" id="narrow-filetype-field" value="" placeholder="custom file type (svg, tex, rtf, py, etc.)"  onkeyup="updateFiles('narrow')">
             </div>
 
             <div class="domain module">
@@ -236,7 +236,7 @@
                 <!-- <button type="button" class="filetype button" id="tex-file-exclude" onclick="fileTypeToggle('tex-file-exclude')">.tex</button> -->
                 <button type="button" class="filetype button" id="xls-file-exclude" onclick="fileTypeToggle('xls-file-exclude')">.xls</button>
                 <button type="button" class="filetype button" id="ppt-file-exclude" onclick="fileTypeToggle('ppt-file-exclude')">.ppt</button><br>
-                <input type="text" id="filetype-field" value="" placeholder="custom file type (svg, tex, rtf, py, etc.)">
+                <input type="text" id="exclude-filetype-field" value="" placeholder="custom file type (svg, tex, rtf, py, etc.)" onkeyup="updateFiles('exclude')">
             </div>
         </div>
 
