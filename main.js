@@ -22,10 +22,10 @@ const EXCLUDE_FILE_TYPE_INDEX = 12;
 
 //Logic operators
 const ANY_OP = '|';
-const ALL_OP = '&';
+const ALL_OP = 'AND';
 
 //delimiter to separate keywords
-const DELIMITER = ' ';
+const DELIMITER = ',';
 
 //file type length
 const FILE_NAME_LENGTH = 3;
@@ -33,7 +33,7 @@ const FILE_NAME_LENGTH = 3;
 //prefixs
 const FILE_PREFIX = 'filetype:';
 const SITE_PREFIX = 'site:';
-const APPEARANCE_PREFIX = 'all';
+const ALL_INTITLE_PREFIX = 'all';
 const EXCLUDE_PREFIX = '-';
 
 //default text size
@@ -244,9 +244,7 @@ function anyAllToggle(idName, isAny) {
 function updateAppearancesSection(idName) {
 	//take input from appropraite section
 	let input = document.getElementById(idName + "Input").value;
-	let delimit = input.split(DELIMITER);
-	
-	let prefix = APPEARANCE_PREFIX + idName + ':'; 
+
 	//is any button selected for specific type (link, url, text, or title)
 	let isAnySelected;
 	//which element is being modified
@@ -274,10 +272,10 @@ function updateAppearancesSection(idName) {
 
 	//use any operator if any button selected. all operator if all button selected
 	if (isAnySelected) {
-		if (input) searchStringElements[changedIndex] = getLogicOp(ANY_OP, delimit, prefix);
+		if (input) searchStringElements[changedIndex] = idName + ':' + input;
 		else searchStringElements[changedIndex] = undefined;
 	} else {
-		if (input) searchStringElements[changedIndex] = getLogicOp(ALL_OP, delimit, prefix);
+		if (input) searchStringElements[changedIndex] =  ALL_INTITLE_PREFIX + idName + ':' + input;
 		else searchStringElements[changedIndex] = undefined;
 	}
 	updateSearchString();
