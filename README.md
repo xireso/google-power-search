@@ -7,6 +7,13 @@ Finding the correct Google query string is an art in and of itself. We made this
 # The dev stack
 Coming off of a tough semester with lots of new languages, algorithms, and frameworks, we decided to stick with good ol' vanilla html, css, and javascript for this project.
 
+## Backstory
+Back in 2014, one of our team members was sitting bored in his Human Geography class when he noticed a poster on the wall. It touted the use of "Advanced Google Search Operators" for more effective Googling. He stayed after class to study the poster, picking up a few basic operators for his daily use. These operators have helped him to this day, and now, 6 years later, he's back with a team.
+
+It has been said that "Life is like Google: You need to know what you're searching for." Offering customized ways to search the internet, we are set on making this simple tool to make it easier for anyone to do exactly that.
+
+tl;dr: Public school inspired us to make an achievable, yet impactful, project for this hackathon.
+
 # Why we built this
 We built this for the 2020 Hack the Northeast (HTNE) -- a virtual hackathon.
 
@@ -15,13 +22,6 @@ Nearly everyone uses Google to search the web, but there are, in fact, advanced 
 
 ![Advanced Search List](/DocumentationImages/infographic.png)
 Source: https://www.webfx.com/blog/google-2/google-advanced-search-operators-cheat-sheet/
-
-## Why we built this
-Back in 2014, one of our team members was sitting bored in his Human Geography class when he noticed a poster on the wall. It touted the use of "Advanced Google Search Operators" for more effective Googling. He stayed after class to study the poster, picking up a few basic operators for his daily use. These operators have helped him to this day, and now, 6 years later, he's back with a team.
-
-It has been said that "Life is like Google: You need to know what you're searching for." Offering customized ways to search the internet, we are set on making this simple tool to make it easier for anyone to do exactly that.
-
-tl;dr: Public school inspired us to make an achievable, yet impactful, project for this hackathon.
 
 # Inspiration 
 In addition to the search modification functionality, we also wanted to generate the "Search String" as the user started to list requirements. Because the user can see the Search String being built, it gives them control over their inputs. And, in each text field's default state, inputs are prefilled with suggestions which prompts the user to type inputs in the correct format.
