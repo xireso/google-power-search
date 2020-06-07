@@ -491,11 +491,15 @@ function joinWithSpaces(array) {
 	return out;
 }
 
+/* 
+* called to display/hide an instructional modal on "How to Use" the tool 
+*/
 function helpPopUp() {
 	var modal = document.getElementById('helpModal');
 	var btn = document.getElementById('helpBtn');
 	var span = document.getElementById('helpSpan');
 
+	// display modal in main window
 	btn.onclick = function() {
 		modal.style.display = "block";
 	}
@@ -504,20 +508,29 @@ function helpPopUp() {
 	span.onclick = function() { 
 		modal.style.display = "none";
 	}
+	 
+	// modalB is called here to catch cases where the window might be assigned the wrong modal
+	var modalB = document.getElementById('exModal');
 
 	// close modal when user clicks on window (outside modal)
 	window.onclick = function(event) {
 		if (event.target == modal) {
 			modal.style.display = "none";
+		} else if (event.target == modalB) {
+			modalB.style.display = "none";
 		}
 	}
 }
 
+/*
+* called to display/hide a modal of example uses for our tool
+*/
 function exPopUp() {
 	var modal = document.getElementById('exModal');
 	var btn = document.getElementById('exBtn');
 	var span = document.getElementById('exSpan');
 
+	// display modal in main window
 	btn.onclick = function() {
 		modal.style.display = "block";
 	}
@@ -527,10 +540,15 @@ function exPopUp() {
 		modal.style.display = "none";
 	}
 
+	// modalB is called here to catch cases where the window might be assigned the wrong modal
+	var modalB = document.getElementById('helpModal');
+	
 	// close modal when user clicks on window (outside modal)
 	window.onclick = function(event) {
 		if (event.target == modal) {
 			modal.style.display = "none";
+		} else if (event.target == modalB) {
+			modalB.style.display = "none";
 		}
 	}
 }
