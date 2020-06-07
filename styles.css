@@ -402,9 +402,11 @@ button {
 
 .social-media-icon {
 	display: inline-block;
-	color: white;
+	/* color: white; */
 	margin: 0 3px;
 	fill: white;
+	height: 60px;
+	width: 60px;
 }
 
 .modal-section {
