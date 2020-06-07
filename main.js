@@ -330,8 +330,8 @@ function fileTypeToggle(idName) {
  * @param {String} narrowOrExclude whether updating narrow or exclude search line
  */
 function updateFiles(narrowOrExclude) {
-	//array of file types in custom
-	let delimit = document.getElementById(narrowOrExclude + CUSTOM_FILE_TYPE_SUFFIX).value.split(FILE_AND_DOMAIN_DELIMETER);
+	//array of file types in custom. preimptivley removes and '.' from string (ex .pdf -> pdf)
+	let delimit = document.getElementById(narrowOrExclude + CUSTOM_FILE_TYPE_SUFFIX).value.replace('.','').split(FILE_AND_DOMAIN_DELIMETER);
 
 	switch (narrowOrExclude) {
 		case 'narrow':
