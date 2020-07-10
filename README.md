@@ -1,5 +1,5 @@
 # google-power-search
-A power tool for power users of Google. This tool helps you more relevant, personalized, and useful results from your Google searches, using Google search's built-in operators.
+A power tool for power users of Google. This tool helps you more relevant, personalized, and useful results from your Google searches, all using Google search's built-in operators.
 
 # How to use
 Our live website: http://google-power-search.rf.gd
