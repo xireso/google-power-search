@@ -64,7 +64,7 @@
         <!-- modal content -->
         <div class="modal-content">
             <!-- &times; = 'x' (multiplication symbol) -->
-            <span id="helpSpan" class="close">&times;</span>
+            <span id="helpSpan" class="close" tabindex="1">&times;</span>
             <h1 class="center">Getting Started:</h1>
             <div class="modal-text">
                 <h3 class="blue modal-header">1. Enter a search query</h3>
@@ -84,7 +84,7 @@
     <div id="exModal" class="modal">
         <!-- modal content-->
         <div class="modal-content">
-            <span id="exSpan" class="close">&times;</span>
+            <span id="exSpan" class="close" tabindex="1">&times;</span>
             <h1 class="center">Prompts for Googling:</h1>
             <div class="modal-text">
                 <h3 class="blue modal-header">Specific domains or News sources:</h3>
@@ -136,7 +136,7 @@
                     <h1 class="search-header">Generated Google Search String</h1>
     
                     <div class="search-bar"> 
-                        <input readonly type=text id="searchString2" value=' '>
+                        <input readonly type=text id="searchString2" value=" " tabindex="-1">
                         
                         <button class="search-button" onclick="searchGoogle()">
                             <img class="search-background"src="/googleSearchBkgrnd.png">
