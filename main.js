@@ -123,7 +123,7 @@ function updateApart() {
 	if (apartNum || keyword1 || keyword2) {
 		let aroundString = ' AROUND(' + apartNum + ') ';
 		let apartString = keyword1 + aroundString + keyword2;
-		console.log(apartString);
+		// console.log(apartString);
 
 		searchStringElements[AROUND_INDEX] = apartString;
 	} else {
@@ -387,10 +387,6 @@ function scaleFontSize(element) {
 
 	// Reset font-size to default to begin
 	container.style.fontSize = toFontSizeFormat(DEFAULT_FONT_SIZE);
-	console.log(container.style.fontSize);
-
-	console.log(container.scrollWidth);
-	console.log(container.clientWidth);
 
 	// Check if the text is wider than its container,
 	// if so then reduce font-size
@@ -398,12 +394,8 @@ function scaleFontSize(element) {
 		let decreaseRatio = 0.5;
 		currentFontSize = currentFontSize * 0.65;
 		container.style.fontSize = toFontSizeFormat(currentFontSize);
-		console.log('MODIFY');
+		// console.log('MODIFY');
 	}
-	console.log('before:' + container.style.fontSize);
-	//console.log("after:" + toFontSizeFormat(currentFontSize));
-	console.log(container.scrollWidth);
-	console.log(container.clientWidth);
 }
 
 // function scaleFontSize(element) {
@@ -473,7 +465,6 @@ function clearAllSelections() {
 	let fileButtons = document.getElementsByClassName('filetype');
 	for (button of fileButtons) {
 		if (button.classList.contains('button-highlight')) {
-			console.log(button);
 			button.classList.add('button');
 			button.classList.remove('button-highlight');
 		}
